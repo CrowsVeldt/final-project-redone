@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import axios from '../../../api/axios';
-import { useLoaderData } from 'react-router-dom';
-import { Box, Flex, Text, Heading, Divider } from '@chakra-ui/react';
-import ProductCard from '../../../components/productCard/ProductCard';
-import { CartContext } from '../../../context/CartContext';
-import { useContext } from 'react';
-import Pagination from './Pagination';
+import { useState } from "react";
+import axios from "../../../api/axios";
+import { useLoaderData } from "react-router-dom";
+import { Box, Flex, Text, Heading, Divider } from "@chakra-ui/react";
+import ProductCard from "../../../components/productCard/ProductCard";
+import { CartContext } from "../../../context/CartContext";
+import { useContext } from "react";
+import Pagination from "./Pagination";
 
 export const getAllProducts = async () => {
   try {
     const {
       data: { products },
-    } = await axios.get('/products/customers/all');
+    } = await axios.get("/products/customers/all");
     return products;
   } catch (error) {
     return error;
@@ -26,9 +26,12 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const productPerPage = 4;
-  const indexOfLastProduct = currentPage * productPerPage
-  const indexOfFirstProduct = indexOfLastProduct - productPerPage
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
+  const indexOfLastProduct = currentPage * productPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   const addToCart = (item) => {
     // does item exist on cart?
@@ -50,11 +53,11 @@ const Products = () => {
   };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page)
-  }
+    setCurrentPage(page);
+  };
 
   return (
-    <Box minH='65vh'  py={10} px={4}>
+    <Box minH="65vh" py={10} px={4}>
       <Heading>Home</Heading>
       <Text my={5}>
         Welcomt to our online store for furniture, Lorem ipsum dolor sit amet
@@ -67,10 +70,10 @@ const Products = () => {
       <Heading my={5}>Products</Heading>
       <Divider />
       <Flex
-        direction={['column', 'column', 'row', 'row']}
-        flexWrap='wrap'
+        direction={["column", "column", "row", "row"]}
+        flexWrap="wrap"
         my={6}
-        justifyContent='space-between'
+        justifyContent="space-between"
       >
         {currentProducts.map((product) => (
           <ProductCard

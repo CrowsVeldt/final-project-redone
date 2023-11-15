@@ -1,7 +1,0 @@
-models:
-1. user V
-2. product
-3. category
-4. order
-5. manager
-6. cart - optional can be saved on localStorage
