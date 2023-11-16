@@ -1,3 +1,4 @@
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -9,12 +10,33 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
-import { UserContext } from "../context/UserContext";
+import { toast } from "react-toastify";
+import AuthContext from "../../context/AuthContext";
 
 export default function DeleteUserAlert(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { user, deleteUser } = useContext(UserContext);
+  const { user, setUser } = useContext(AuthContext);
   const cancelRef = React.useRef();
+  const privateAxios = useAxiosPrivate();
+
+  const deleteUser = async () => {
+    try {
+      const response = await privateAxios.delete(
+        `/users/customers/${user?.user?._id}`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (response.status === 200) {
+        setUser(null);
+        toast.success(response?.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(err.response?.data.message);
+    }
+  };
 
   return (
     <>

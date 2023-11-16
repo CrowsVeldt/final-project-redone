@@ -3,6 +3,7 @@ import AuthContext from "../../context/AuthContext";
 import { Box, Button, Heading, Input, Stack, Text } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import DeleteUserAlert from "../../components/info/DeleteUserAlert";
 
 // const useStat = () => {
 //   return [
@@ -38,7 +39,6 @@ const Profile = () => {
 
   const handleSaveButton = async () => {
     try {
-      debugger;
       const response = await axiosPrivateRoute.put(
         `/users/customers/${user?.user._id}`,
         values
@@ -207,6 +207,7 @@ const Profile = () => {
           Edit
         </Button>
       )}
+      {isEditing && <DeleteUserAlert id="Delete user popup" />}
     </Box>
   );
 };

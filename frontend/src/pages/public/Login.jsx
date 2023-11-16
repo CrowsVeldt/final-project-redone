@@ -5,8 +5,6 @@ import {
   FormLabel,
   Heading,
   Input,
-  InputGroup,
-  InputRightElement,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";

@@ -1,7 +1,27 @@
-const UserModel = require('../models/User.model');
-const User = require('../models/User.model');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const UserModel = require("../models/User.model");
+const User = require("../models/User.model");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
+const deleteCustomer = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      error = new Error("Resource not found");
+      error.code = 401;
+      throw error;
+    }
+
+    res.clearCookie("token");
+
+    return res
+      .status(200)
+      .json({ success: true, message: "Succesfully deleted user" });
+  } catch (error) {
+    res.status(400).json({ success: false, message: "User was not deleted" });
+  }
+};
 
 const registerCustomer = async (req, res, next) => {
   try {
@@ -17,12 +37,12 @@ const registerCustomer = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       user,
-      message: 'User was registered succesfully',
+      message: "User was registered succesfully",
     });
   } catch (error) {
     return res.status(400).json({
       success: false,
-      message: 'User was not registered',
+      message: "User was not registered",
     });
   }
 };
@@ -36,13 +56,13 @@ const loginCustomer = async (req, res, next) => {
     const user = await UserModel.findOne({ user_email });
 
     if (!user) {
-      throw new Error('Bad credentials');
+      throw new Error("Bad credentials");
     }
 
     const equal = await bcrypt.compare(user_password, user.user_password);
 
     if (!equal) {
-      throw new Error('Bad credentials');
+      throw new Error("Bad credentials");
     }
 
     // user login success
@@ -56,7 +76,7 @@ const loginCustomer = async (req, res, next) => {
     });
 
     const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: '1d',
+      expiresIn: "1d",
     });
 
     // TODO add refresh token to user.tokens in DB (look at user model)
@@ -65,20 +85,20 @@ const loginCustomer = async (req, res, next) => {
       {
         token: refreshToken,
       },
-      { new: true },
+      { new: true }
     );
 
     // sending refresh token as cookie
-    res.cookie('token', refreshToken, {
+    res.cookie("token", refreshToken, {
       httpOnly: true,
-      sameSite: 'None', // required if domain of api and store/site is different
+      sameSite: "None", // required if domain of api and store/site is different
       secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
 
     return res.status(201).json({
       success: true,
-      message: 'user login successfully - for customer',
+      message: "user login successfully - for customer",
       customerToken,
       user: {
         _id: user._id,
@@ -97,18 +117,19 @@ const logoutCustomer = async (req, res, next) => {
   // במידה והטוקנים הם מסוג ריפרש טוקן אז צריך למחוק אותם מהדאטאבייס
 
   // קודם נבדוק אם קיים הדר של authorization
+  console.log(req);
   if (req.headers && req.headers.authorization) {
     try {
-      const token = req.headers.authorization.split(' ')[1]; // ['bearer', 'ghfh43$R#!']
+      const token = req.headers.authorization.split(" ")[1]; // ['bearer', 'ghfh43$R#!']
       if (!token) {
         return res
           .status(403)
-          .send({ success: false, message: 'Authorization failed!' });
+          .send({ success: false, message: "Authorization failed!" });
       }
       const _id = req.user._id;
       // TODO remove token from DB in user document
 
-      res.clearCookie('token');
+      res.clearCookie("token");
 
       return res.sendStatus(204);
     } catch (error) {
@@ -124,11 +145,11 @@ const getUserInfo = async (req, res, next) => {
     if (!foundUser)
       return res
         .status(401)
-        .send({ success: false, message: 'User not found!' });
+        .send({ success: false, message: "User not found!" });
 
     res.status(200).send({
       success: true,
-      message: 'user login successfully - for customer',
+      message: "user login successfully - for customer",
       user: {
         _id: foundUser._id,
         user_name: foundUser.user_name,
@@ -153,7 +174,7 @@ const updateCustomer = async (req, res, next) => {
         user,
       });
     } else {
-      res.status(401).send({message: 'Unauthorized action'})
+      res.status(401).send({ message: "Unauthorized action" });
     }
   } catch (error) {
     return next(error);
@@ -161,9 +182,10 @@ const updateCustomer = async (req, res, next) => {
 };
 
 module.exports = {
+  deleteCustomer,
+  getUserInfo,
+  loginCustomer,
   logoutCustomer,
   registerCustomer,
-  loginCustomer,
-  getUserInfo,
   updateCustomer,
 };
