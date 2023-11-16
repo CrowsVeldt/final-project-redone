@@ -5,22 +5,20 @@ import {
   FormLabel,
   Heading,
   Input,
-  InputGroup,
-  InputRightElement,
-} from '@chakra-ui/react';
-import { useState } from 'react';
-import axios from '../../api/axios';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import axios from "../../api/axios";
+import PasswordInput from "../../components/inputs/PasswordInput";
 
 const Register = () => {
-  const [show, setShow] = useState(false);
   const [values, setValues] = useState({
-    user_name: '',
-    user_email: '',
-    user_phone: '',
-    user_password: '',
-    user_password_confirm: '',
+    user_name: "",
+    user_email: "",
+    user_phone: "",
+    user_password: "",
+    user_password_confirm: "",
   });
   const navigate = useNavigate();
 
@@ -30,8 +28,6 @@ const Register = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
-  const handleClick = () => setShow(!show);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,40 +40,40 @@ const Register = () => {
         user_password_confirm,
       } = values;
       if (user_password !== user_password_confirm)
-        throw new Error('Passwords do not match');
+        throw new Error("Passwords do not match");
 
-      const response = await axios.post('/users/customers/register', {
+      const response = await axios.post("/users/customers/register", {
         user_name,
         user_email,
         user_password,
         user_phone,
       });
 
-      toast.success(response.message)
-      navigate('/login')
+      toast.success(response.message);
+      navigate("/login");
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
   return (
     <Box
-      as='form'
+      as="form"
       onSubmit={handleSubmit}
-      minH='65vh'
-      maxW='600px'
-      mx='auto'
+      minH="65vh"
+      maxW="600px"
+      mx="auto"
       py={10}
       px={4}
     >
-      <Heading as='h1' size='xl' mb={5}>
+      <Heading as="h1" size="xl" mb={5}>
         Register
       </Heading>
       <FormControl isRequired mb={4}>
         <FormLabel>Your Name</FormLabel>
         <Input
-          name='user_name'
-          type='text'
-          placeholder='Type in your name'
+          name="user_name"
+          type="text"
+          placeholder="Type in your name"
           value={values.user_name}
           onChange={handleChange}
         />
@@ -85,9 +81,9 @@ const Register = () => {
       <FormControl isRequired mb={4}>
         <FormLabel>Email Address</FormLabel>
         <Input
-          name='user_email'
-          type='email'
-          placeholder='Type in your Email'
+          name="user_email"
+          type="email"
+          placeholder="Type in your Email"
           value={values.user_email}
           onChange={handleChange}
         />
@@ -95,42 +91,31 @@ const Register = () => {
       <FormControl isRequired mb={4}>
         <FormLabel>Phone Number</FormLabel>
         <Input
-          name='user_phone'
-          type='text'
-          placeholder='Type in your phone'
+          name="user_phone"
+          type="text"
+          placeholder="Type in your phone"
           value={values.user_phone}
           onChange={handleChange}
         />
       </FormControl>
 
       <FormControl isRequired mb={4}>
-        <FormLabel>Password</FormLabel>
-        {/* <InputGroup>
-          <InputRightElement width='4.5rem'> */}
-        <Input
-          name='user_password'
-          type={show ? 'text' : 'password'}
-          placeholder='Type in you password'
+        <PasswordInput
+          name="user_password"
+          placeholder="Password"
           value={values.user_password}
-          onChange={handleChange}
+          state={handleChange}
         />
-        {/* <Button h='1.75rem' size='sm' onClick={handleClick}>
-              {show ? 'Hide' : 'Show'}
-            </Button>
-          </InputRightElement>
-        </InputGroup> */}
       </FormControl>
       <FormControl isRequired mb={4}>
-        <FormLabel>Password Again</FormLabel>
-        <Input
-          name='user_password_confirm'
-          type={show ? 'text' : 'password'}
-          placeholder='Type password again'
+        <PasswordInput
+          name="user_password_confirm"
+          placeholder="Confirm Password"
           value={values.user_password_confirm}
-          onChange={handleChange}
+          state={handleChange}
         />
       </FormControl>
-      <Button type='submit' colorScheme='teal' size='lg' mb={4}>
+      <Button type="submit" colorScheme="teal" size="lg" mb={4}>
         Register
       </Button>
       {/* text for "have account? -> link to login" */}

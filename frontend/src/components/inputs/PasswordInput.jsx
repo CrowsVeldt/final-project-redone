@@ -10,7 +10,6 @@ import {
 
 export default function PasswordInput(props) {
   const [show, setShow] = useState(false);
-  const setPassword = props.state;
   const handleClick = () => setShow(!show);
   // set id in parent element
   // parent element should have state [password, setPassword]
@@ -18,23 +17,22 @@ export default function PasswordInput(props) {
 
   return (
     <FormControl isRequired>
-      <FormLabel htmlFor={`${props.id}-password-input`}>
+      <FormLabel htmlFor={`${props.name}-password-input`}>
         {props.placeholder}
       </FormLabel>
       <InputGroup size="md">
         <Input
+          name={props.name}
           pr="4.5rem"
           type={show ? "text" : "password"}
           placeholder={props.placeholder}
-          id={`${props.id}-password-input`}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
+          id={`${props.name}`}
+          onChange={(e) => props.state(e)}
         />
         <InputRightElement width="4.5rem">
           <Button
             h="1.75rem"
-            id={`${props.id}-button`}
+            id={`${props.name}-button`}
             size="sm"
             onClick={handleClick}
           >
