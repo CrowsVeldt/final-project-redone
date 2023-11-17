@@ -44,7 +44,7 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      toast.success(response?.data?.message);
+      toast.success(response?.data?.message, { position: "bottom-right" });
       setUser({
         user: response?.data.user,
         accessToken: response?.data.customerToken,
@@ -52,7 +52,7 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data.message);
+      toast.error(error.response?.data.message, { position: "bottom-right" });
     }
   };
   return (
