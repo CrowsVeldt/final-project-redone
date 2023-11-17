@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "../../../api/axios";
 import { useLoaderData } from "react-router-dom";
 import { Box, Flex, Text, Heading, Divider } from "@chakra-ui/react";
+import localforage from "localforage";
 import ProductCard from "../../../components/productCard/ProductCard";
 import { CartContext } from "../../../context/CartContext";
-import { useContext } from "react";
 import Pagination from "./Pagination";
 
 export const getAllProducts = async () => {
@@ -22,8 +22,17 @@ const Products = () => {
   const initialProducts = useLoaderData();
   const [products, setProducts] = useState([...initialProducts]);
   const { cartItems, setCartItems } = useContext(CartContext);
-
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    localforage.getItem(`main page`, (err, val) => {
+      if (!err && val) {
+        setCurrentPage(val);
+      } else {
+        //console.log(err);
+      }
+    });
+  });
 
   const productPerPage = 4;
   const indexOfLastProduct = currentPage * productPerPage;
@@ -53,12 +62,19 @@ const Products = () => {
   };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    localforage.setItem(`main page`, page, (err, val) => {
+      if (!err) {
+        setCurrentPage(val);
+      } else {
+        console.log(err);
+      }
+    });
   };
 
   return (
     <Box minH="65vh" py={10} px={4}>
       <Heading>Home</Heading>
+
       <Text my={5}>
         Welcomt to our online store for furniture, Lorem ipsum dolor sit amet
         consectetur adipisicing elit. Aliquid incidunt cupiditate ipsam dolorem
@@ -68,6 +84,12 @@ const Products = () => {
         exercitationem eveniet consequatur
       </Text>
       <Heading my={5}>Products</Heading>
+      <Pagination
+        currentPage={currentPage}
+        productsPerPage={productPerPage}
+        totalProducts={products.length}
+        onPageChange={handlePageChange}
+      />
       <Divider />
       <Flex
         direction={["column", "column", "row", "row"]}
