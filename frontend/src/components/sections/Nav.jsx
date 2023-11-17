@@ -1,22 +1,14 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Flex,
-  Icon,
-  IconButton,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Icon, Text } from "@chakra-ui/react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { BiHome, BiMenu, BiUser } from "react-icons/bi";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import LogoutIcon from "@mui/icons-material/Logout";
-import LoginIcon from "@mui/icons-material/Login";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import HowToRegIconOutlined from "@mui/icons-material/HowToRegOutlined";
-import { useContext, useState } from "react";
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AuthContext from "../../context/AuthContext";
 import useLogout from "../../hooks/useLogout";
 
@@ -73,7 +65,7 @@ const Nav = () => {
         size="lg"
         variant="outline"
       >
-        <BiMenu />
+        <Icon as={MenuOutlinedIcon} />
       </Button>
       <Flex
         justifyContent="space-between"
