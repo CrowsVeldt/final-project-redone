@@ -1,3 +1,6 @@
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   Box,
   Button,
@@ -6,11 +9,8 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
-import { toast } from "react-toastify";
 import axios from "../../api/axios";
 import AuthContext from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import PasswordInput from "../../components/inputs/PasswordInput";
 
 const Login = () => {
@@ -19,7 +19,7 @@ const Login = () => {
     user_email: "",
     user_password: "",
   });
-  const navigate = useNavigate();
+  const nav = useNavigate();
 
   const handleChange = (e) => {
     setValues((prevValues) => ({
@@ -49,7 +49,7 @@ const Login = () => {
         user: response?.data.user,
         accessToken: response?.data.customerToken,
       });
-      navigate("/");
+      nav(-1);
     } catch (error) {
       console.log(error);
       toast.error(error.response?.data.message, { position: "bottom-right" });
