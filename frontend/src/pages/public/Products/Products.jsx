@@ -29,7 +29,7 @@ const Products = () => {
       if (!err && val) {
         setCurrentPage(val);
       } else {
-        //console.log(err);
+        console.log(err);
       }
     });
   });
