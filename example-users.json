@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "655623907ceb9916b5ece764"
+  },
+  "user_name": "John",
+  "user_email": "john@gmail.com",
+  "user_password": "$2b$10$TOXb2bptaBcY0pPmhn1dYu8aegOuCCOSTP6ve.2mTndL5aMbD42p.",
+  "user_phone": "123456789",
+  "user_orders": [],
+  "__v": 0,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTU2MjM5MDdjZWI5OTE2YjVlY2U3NjQiLCJpYXQiOjE3MDAyNDE3MjEsImV4cCI6MTcwMDMyODEyMX0.CWBlvxLoO5PMvRiN9-9h45g-GIHMmtTPnOPbMJUBVD4"
+}]

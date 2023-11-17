@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "6557a202526da3558d73ed22"
+  },
+  "category_name": "Computers/Peripherals"
+},
+{
+  "_id": {
+    "$oid": "6557a240526da3558d73ed23"
+  },
+  "category_name": "Furniture"
+},
+{
+  "_id": {
+    "$oid": "6557a25b526da3558d73ed24"
+  },
+  "category_name": "Food prep"
+},
+{
+  "_id": {
+    "$oid": "6557a276526da3558d73ed25"
+  },
+  "category_name": "Clothing"
+},
+{
+  "_id": {
+    "$oid": "6557a2a9526da3558d73ed26"
+  },
+  "category_name": "Personal electronics"
+},
+{
+  "_id": {
+    "$oid": "6557a2b8526da3558d73ed27"
+  },
+  "category_name": "Gaming"
+},
+{
+  "_id": {
+    "$oid": "6557a2cc526da3558d73ed28"
+  },
+  "category_name": "Fitness"
+},
+{
+  "_id": {
+    "$oid": "6557a2f0526da3558d73ed29"
+  },
+  "category_name": "School/Backpacks"
+},
+{
+  "_id": {
+    "$oid": "6557a43b526da3558d73ed2a"
+  },
+  "category_name": "Shoes"
+},
+{
+  "_id": {
+    "$oid": "6557a477526da3558d73ed2b"
+  },
+  "category_name": "Home appliances"
+},
+{
+  "_id": {
+    "$oid": "6557a4c8526da3558d73ed2c"
+  },
+  "category_name": "Audio"
+},
+{
+  "_id": {
+    "$oid": "6557a51f526da3558d73ed2d"
+  },
+  "category_name": "Headphones"
+},
+{
+  "_id": {
+    "$oid": "6557a557526da3558d73ed2e"
+  },
+  "category_name": "Wireless"
+},
+{
+  "_id": {
+    "$oid": "6557a5ce526da3558d73ed2f"
+  },
+  "category_name": "Smartphones"
+},
+{
+  "_id": {
+    "$oid": "6557a63d526da3558d73ed30"
+  },
+  "category_name": "Cameras"
+}]

@@ -1,0 +1,349 @@
+[{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed32"
+  },
+  "product_name": "Laptop",
+  "product_description": "Powerful laptop with high-performance features.",
+  "product_price": 1200,
+  "product_image": "laptop_image.jpg",
+  "categories": [
+    {
+      "category": "6557a202526da3558d73ed22"
+    },
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed33"
+  },
+  "product_name": "Smartphone",
+  "product_description": "Latest smartphone with advanced features.",
+  "product_price": 800,
+  "product_image": "smartphone_image.jpg",
+  "categories": [
+    {
+      "category": "6557a5ce526da3558d73ed2f"
+    },
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed34"
+  },
+  "product_name": "Headphones",
+  "product_description": "Wireless headphones with noise-canceling technology.",
+  "product_price": 150,
+  "product_image": "headphones_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a51f526da3558d73ed2d"
+    },
+    {
+      "category": "6557a557526da3558d73ed2e"
+    },
+    {
+      "category": "6557a4c8526da3558d73ed2c"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed35"
+  },
+  "product_name": "Coffee Maker",
+  "product_description": "Automatic coffee maker with programmable settings.",
+  "product_price": 80,
+  "product_image": "coffeemaker_image.jpg",
+  "categories": [
+    {
+      "category": "6557a25b526da3558d73ed24"
+    },
+    {
+      "category": "6557a477526da3558d73ed2b"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed36"
+  },
+  "product_name": "Desk Chair",
+  "product_description": "Ergonomic desk chair with adjustable features.",
+  "product_price": 200,
+  "product_image": "deskchair_image.jpg",
+  "categories": [
+    {
+      "category": "6557a240526da3558d73ed23"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed37"
+  },
+  "product_name": "Fitness Tracker",
+  "product_description": "Wearable fitness tracker with heart rate monitoring.",
+  "product_price": 50,
+  "product_image": "fitnesstracker_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a2cc526da3558d73ed28"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed38"
+  },
+  "product_name": "Gaming Console",
+  "product_description": "High-end gaming console for immersive gaming experiences.",
+  "product_price": 400,
+  "product_image": "gamingconsole_image.jpg",
+  "categories": [
+    {
+      "category": "6557a202526da3558d73ed22"
+    },
+    {
+      "category": "6557a477526da3558d73ed2b"
+    },
+    {
+      "category": "6557a2b8526da3558d73ed27"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed39"
+  },
+  "product_name": "Digital Camera",
+  "product_description": "Mirrorless digital camera with 4K video recording.",
+  "product_price": 700,
+  "product_image": "digitalcamera_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a63d526da3558d73ed30"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed3a"
+  },
+  "product_name": "Backpack",
+  "product_description": "Durable backpack with multiple compartments for organization.",
+  "product_price": 50,
+  "product_image": "backpack_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2f0526da3558d73ed29"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed3b"
+  },
+  "product_name": "Smartwatch",
+  "product_description": "Smartwatch with fitness tracking and notification features.",
+  "product_price": 120,
+  "product_image": "smartwatch_image.jpg",
+  "categories": [
+    {
+      "category": "6557a202526da3558d73ed22"
+    },
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a2cc526da3558d73ed28"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed3c"
+  },
+  "product_name": "Portable Speaker",
+  "product_description": "Bluetooth portable speaker with excellent sound quality.",
+  "product_price": 80,
+  "product_image": "portablespeaker_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a4c8526da3558d73ed2c"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed3d"
+  },
+  "product_name": "Dining Table",
+  "product_description": "Modern dining table with a sleek design.",
+  "product_price": 300,
+  "product_image": "diningtable_image.jpg",
+  "categories": [
+    {
+      "category": "6557a240526da3558d73ed23"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed3e"
+  },
+  "product_name": "Blender",
+  "product_description": "High-speed blender for smoothies and shakes.",
+  "product_price": 60,
+  "product_image": "blender_image.jpg",
+  "categories": [
+    {
+      "category": "6557a25b526da3558d73ed24"
+    },
+    {
+      "category": "6557a477526da3558d73ed2b"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed3f"
+  },
+  "product_name": "Hiking Boots",
+  "product_description": "Waterproof hiking boots for outdoor adventures.",
+  "product_price": 120,
+  "product_image": "hikingboots_image.jpg",
+  "categories": [
+    {
+      "category": "6557a276526da3558d73ed25"
+    },
+    {
+      "category": "6557a43b526da3558d73ed2a"
+    },
+    {
+      "category": "6557a2cc526da3558d73ed28"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed40"
+  },
+  "product_name": "External Hard Drive",
+  "product_description": "Large-capacity external hard drive for data storage.",
+  "product_price": 100,
+  "product_image": "externalharddrive_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a202526da3558d73ed22"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed41"
+  },
+  "product_name": "Yoga Mat",
+  "product_description": "Non-slip yoga mat for home or studio workouts.",
+  "product_price": 20,
+  "product_image": "yogamat_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2cc526da3558d73ed28"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed42"
+  },
+  "product_name": "Wireless Mouse",
+  "product_description": "Ergonomic wireless mouse for comfortable use.",
+  "product_price": 30,
+  "product_image": "wirelessmouse_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a202526da3558d73ed22"
+    },
+    {
+      "category": "6557a557526da3558d73ed2e"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed43"
+  },
+  "product_name": "Air Purifier",
+  "product_description": "HEPA air purifier for clean and fresh indoor air.",
+  "product_price": 150,
+  "product_image": "airpurifier_image.jpg",
+  "categories": [
+    {
+      "category": "6557a477526da3558d73ed2b"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed44"
+  },
+  "product_name": "Toaster Oven",
+  "product_description": "Compact toaster oven for quick and efficient cooking.",
+  "product_price": 40,
+  "product_image": "toasteroven_image.jpg",
+  "categories": [
+    {
+      "category": "6557a25b526da3558d73ed24"
+    },
+    {
+      "category": "6557a477526da3558d73ed2b"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6557a68e526da3558d73ed45"
+  },
+  "product_name": "Wireless Earbuds",
+  "product_description": "True wireless earbuds with noise isolation technology.",
+  "product_price": 90,
+  "product_image": "wirelessearbud_image.jpg",
+  "categories": [
+    {
+      "category": "6557a2a9526da3558d73ed26"
+    },
+    {
+      "category": "6557a51f526da3558d73ed2d"
+    },
+    {
+      "category": "6557a557526da3558d73ed2e"
+    },
+    {
+      "category": "6557a4c8526da3558d73ed2c"
+    }
+  ]
+}]
