@@ -21,7 +21,7 @@ export const getAllProducts = async () => {
 const Products = () => {
   const initialProducts = useLoaderData();
   const [products, setProducts] = useState([...initialProducts]);
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -41,25 +41,6 @@ const Products = () => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
-
-  const addToCart = (item) => {
-    // does item exist on cart?
-    const isItemExist = cartItems.find((cartItem) => cartItem._id === item._id);
-    // if it does, update quantity by 1+
-    if (isItemExist) {
-      const updatedCartItems = cartItems.map((cartItem) => {
-        if (cartItem._id === item._id) {
-          return { ...cartItem, quantity: cartItem.quantity + 1 };
-        }
-        return cartItem;
-      });
-
-      setCartItems(updatedCartItems);
-    } else {
-      // if not add new item to cart
-      setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
-    }
-  };
 
   const handlePageChange = (page) => {
     localforage.setItem(`main page`, page, (err, val) => {
