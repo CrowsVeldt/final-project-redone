@@ -3,7 +3,7 @@ import axios from "../../../api/axios";
 import { useLoaderData } from "react-router-dom";
 import { Box, Flex, Text, Heading, Divider } from "@chakra-ui/react";
 import localforage from "localforage";
-import ProductCard from "../../../components/productCard/ProductCard";
+import ProductCard from "../../../components/product/ProductCard";
 import { CartContext } from "../../../context/CartContext";
 import Pagination from "./Pagination";
 

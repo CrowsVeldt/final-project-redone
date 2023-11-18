@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Modal,
   ModalOverlay,
@@ -7,12 +8,13 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Text,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 
-const ShoppingCartModal = (props) => {
-  const { isOpen, onClose } = props.func;
+export default function ShoppingCartModal(props) {
+  const { isOpen, onClose } = props.fun;
   console.log("shit");
 
   return (
@@ -22,7 +24,11 @@ const ShoppingCartModal = (props) => {
         <ModalContent>
           <ModalHeader>Shopping cart</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>{/* Cart items here*/}</ModalBody>
+          <ModalBody>
+            <Box>
+              <Text>Cart body</Text>
+            </Box>
+          </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
@@ -39,6 +45,4 @@ const ShoppingCartModal = (props) => {
       </Modal>
     </>
   );
-};
-
-export default ShoppingCartModal;
+}
