@@ -13,12 +13,16 @@ import {
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import CartItem from "../product/cartItem";
+import CartItem from "../product/CartItem";
 
 export default function ShoppingCartModal(props) {
   const { isOpen, onClose } = props.fun;
   const { cartItems } = useContext(CartContext);
   const nav = useNavigate();
+
+  const calculateTotal = (priceArray) => {
+    return priceArray.reduce((a, b) => a + b);
+  };
 
   return (
     <>
@@ -31,15 +35,15 @@ export default function ShoppingCartModal(props) {
             <Box>
               {cartItems.map((item, index) => {
                 return (
-                  <Box>
-                    <CartItem product={item} key={index} />
+                  <Box key={index}>
+                    <CartItem product={item} />
                     <Divider />
                   </Box>
                 );
               })}
               {cartItems
                 ? `Total: $${cartItems.reduce((a, b) => {
-                    return (a += b.product_price);
+                    return (a += b.product_price * b.quantity);
                   }, 0)}`
                 : ""}
             </Box>

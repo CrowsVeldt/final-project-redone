@@ -1,16 +1,41 @@
-import { Box, CloseButton, Flex, Text } from "@chakra-ui/react";
+import { Button, CloseButton, Flex, Text } from "@chakra-ui/react";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 export default function CartItem(props) {
+  const { addToCart, removeFromCart } = useContext(CartContext);
+  const { product } = props;
+
   return (
-    <Flex key={props.key}>
+    <Flex justifyContent={"space-between"}>
       <Flex direction={"column"}>
-        <Flex direction={"row"}>
-          <Text>{props.product.product_name}</Text>
-          <Text ms={"1"}>{`(${props.product.quantity})`}</Text>
+        <Flex>
+          <Text>{product.product_name}</Text>
+          <Flex ms={"10"}>
+            <Button
+              variant={"ghost"}
+              h={"1.5em"}
+              onClick={() => {
+                removeFromCart(product);
+              }}
+            >
+              {"<"}
+            </Button>
+            <Text>{`(${product.quantity})`}</Text>
+            <Button
+              variant={"ghost"}
+              h={"1.5em"}
+              onClick={() => {
+                addToCart(product);
+              }}
+            >
+              {">"}
+            </Button>
+          </Flex>
         </Flex>
-        <Text>{`$${props.product.product_price}`}</Text>
+        <Text>{`$${product.product_price * product.quantity}`}</Text>
       </Flex>
-      <CloseButton justifySelf={"end"} onClick={(e) => console.log(e.target)} />
+      <CloseButton onClick={() => removeFromCart(product, true)} />
     </Flex>
   );
 }
