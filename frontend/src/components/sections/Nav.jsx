@@ -92,14 +92,16 @@ const Nav = () => {
           </Link>
         </ButtonGroup>
         <ButtonGroup w="35%" justifyContent={["start", "end"]}>
-          {!user && (
-            <Link to="/register">
-              <Button sx={navButtonStyles} variant="outline">
-                <Icon as={HowToRegIconOutlined} />
-                Register
-              </Button>
-            </Link>
-          )}
+          {
+            <Button
+              sx={navButtonStyles}
+              variant={"outline"}
+              onClick={null /* open shopping cart */}
+            >
+              <Icon as={ShoppingCartOutlinedIcon} />
+              Cart
+            </Button>
+          }
           {!user && (
             <Link to="/login">
               <Button sx={navButtonStyles} variant="outline">
@@ -108,11 +110,11 @@ const Nav = () => {
               </Button>
             </Link>
           )}
-          {user && (
-            <Link to="/profile">
+          {!user && (
+            <Link to="/register">
               <Button sx={navButtonStyles} variant="outline">
-                <Icon as={PersonOutlinedIcon} />
-                <Text ml={1}>{user?.user?.user_name}</Text>
+                <Icon as={HowToRegIconOutlined} />
+                Register
               </Button>
             </Link>
           )}
@@ -121,6 +123,14 @@ const Nav = () => {
               <Icon as={LogoutIcon} />
               Logout
             </Button>
+          )}
+          {user && (
+            <Link to="/profile">
+              <Button sx={navButtonStyles} variant="outline">
+                <Icon as={PersonOutlinedIcon} />
+                <Text ml={1}>{user?.user?.user_name}</Text>
+              </Button>
+            </Link>
           )}
         </ButtonGroup>
       </Flex>
