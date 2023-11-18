@@ -1,4 +1,13 @@
-import { Box, Button, ButtonGroup, Flex, Icon, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Flex,
+  FormControl,
+  Icon,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -11,14 +20,16 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AuthContext from "../../context/AuthContext";
 import useLogout from "../../hooks/useLogout";
+import ShoppingCartModal from "./ShoppingCart";
 
 const Nav = () => {
   const { user } = useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const logout = useLogout();
 
   const navStyles = {
-    display: [isOpen ? "flex" : "none", "flex"],
+    display: [menuOpen ? "flex" : "none", "flex"],
     gap: 5,
     p: [2, 5, 7],
   };
@@ -47,7 +58,7 @@ const Nav = () => {
   };
 
   const handleMenuClick = () => {
-    setIsOpen(!isOpen);
+    setMenuOpen(!menuOpen);
   };
 
   const NavButton = ({ children }) => {
@@ -82,7 +93,8 @@ const Nav = () => {
           </Link>
         </ButtonGroup>
         <ButtonGroup w="40%" flexDirection={["column", "row"]}>
-          {
+          {}
+          <FormControl id="shopping-cart-modal-control">
             <Button
               sx={navButtonStyles}
               variant={"outline"}
@@ -91,7 +103,7 @@ const Nav = () => {
               <Icon as={ShoppingCartOutlinedIcon} />
               Cart
             </Button>
-          }
+          </FormControl>
           {!user && (
             <Link to="/login">
               <Button sx={navButtonStyles} variant="outline">
@@ -124,6 +136,12 @@ const Nav = () => {
           )}
         </ButtonGroup>
       </Flex>
+      {isOpen && (
+        <ShoppingCartModal
+          id="shopping-cart-modal"
+          func={{ isOpen, onClose }}
+        />
+      )}
     </Box>
   );
 };
