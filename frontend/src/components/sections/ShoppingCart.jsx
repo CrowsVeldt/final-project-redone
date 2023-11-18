@@ -8,14 +8,17 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Text,
+  Divider,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
-import AuthContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import CartItem from "../product/cartItem";
 
 export default function ShoppingCartModal(props) {
   const { isOpen, onClose } = props.fun;
-  console.log("shit");
+  const { cartItems } = useContext(CartContext);
+  const nav = useNavigate();
 
   return (
     <>
@@ -26,7 +29,19 @@ export default function ShoppingCartModal(props) {
           <ModalCloseButton />
           <ModalBody>
             <Box>
-              <Text>Cart body</Text>
+              {cartItems.map((item, index) => {
+                return (
+                  <Box>
+                    <CartItem product={item} key={index} />
+                    <Divider />
+                  </Box>
+                );
+              })}
+              {cartItems
+                ? `Total: $${cartItems.reduce((a, b) => {
+                    return (a += b.product_price);
+                  }, 0)}`
+                : ""}
             </Box>
           </ModalBody>
           <ModalFooter>
@@ -35,7 +50,8 @@ export default function ShoppingCartModal(props) {
             </Button>
             <Button
               onClick={() => {
-                // go to checkout
+                onClose();
+                nav("/");
               }}
             >
               Checkout
