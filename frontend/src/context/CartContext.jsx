@@ -1,25 +1,64 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
+  const addToCart = (item) => {
+    // does item exist on cart?
+    const itemExists = cartItems.find((cartItem) => cartItem._id === item._id);
+    // if it does, update quantity by 1+
+    if (itemExists) {
+      const updatedCartItems = cartItems.map((cartItem) => {
+        if (cartItem._id === item._id) {
+          return { ...cartItem, quantity: cartItem.quantity + 1 };
+        }
+        return cartItem;
+      });
+
+      setCartItems(updatedCartItems);
+    } else {
+      // if not add new item to cart
+      setCartItems((prev) => [...prev, { ...item, quantity: 1 }]);
+    }
+  };
+
+  const removeFromCart = (item, removeAll = false) => {
+    const itemExists = cartItems.find((cartItem) => cartItem._id === item._id);
+    if (removeAll) {
+      const cartList = cartItems.filter(
+        (cartItem) => cartItem._id !== item._id
+      );
+      setCartItems(cartList);
+    } else if (itemExists?.quantity > 1) {
+      const updatedCartItems = cartItems.map((cartItem, index) => {
+        if (cartItem._id === item._id) {
+          const newQuantity = cartItem.quantity - 1;
+          return { ...cartItem, quantity: newQuantity };
+        }
+        return cartItem;
+      });
+      setCartItems(updatedCartItems);
+    }
+  };
+
   useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(storedCartItems);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const value = {
     cartItems,
-    setCartItems,
+    addToCart,
+    removeFromCart,
   };
 
-  return (<CartContext.Provider value={value}>{children}</CartContext.Provider>);
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
 export default CartProvider;

@@ -95,11 +95,7 @@ const Nav = () => {
         <ButtonGroup w="40%" flexDirection={["column", "row"]}>
           {}
           <FormControl id="shopping-cart-modal-control">
-            <Button
-              sx={navButtonStyles}
-              variant={"outline"}
-              onClick={null /* open shopping cart */}
-            >
+            <Button sx={navButtonStyles} variant={"outline"} onClick={onOpen}>
               <Icon as={ShoppingCartOutlinedIcon} />
               Cart
             </Button>
@@ -137,10 +133,7 @@ const Nav = () => {
         </ButtonGroup>
       </Flex>
       {isOpen && (
-        <ShoppingCartModal
-          id="shopping-cart-modal"
-          func={{ isOpen, onClose }}
-        />
+        <ShoppingCartModal id="shopping-cart-modal" fun={{ isOpen, onClose }} />
       )}
     </Box>
   );
