@@ -30,6 +30,7 @@ const Nav = () => {
       borderColor: "black",
     },
 
+    width: "100%",
     fontSize: ["16px", "16px", "20px"],
     border: "2px transparent solid",
   };
@@ -69,29 +70,18 @@ const Nav = () => {
       </Button>
       <Flex
         justifyContent="space-between"
-        alignItems={["baseline", "center"]}
+        alignItems={["center"]}
         direction={["column", "row"]}
         sx={navStyles}
       >
         <ButtonGroup w="35%">
           <Link to="/">
             <NavButton>
-              <Icon as={HomeOutlinedIcon} />
+              <Icon as={HomeOutlinedIcon} boxSize={[null, "2em"]} />
             </NavButton>
           </Link>
-          <Link to="/about">
-            <Button sx={navButtonStyles} variant="outline">
-              About
-            </Button>
-          </Link>
-
-          <Link to="/contact">
-            <Button sx={navButtonStyles} variant="outline">
-              Contact
-            </Button>
-          </Link>
         </ButtonGroup>
-        <ButtonGroup w="35%" justifyContent={["start", "end"]}>
+        <ButtonGroup w="40%" flexDirection={["column", "row"]}>
           {
             <Button
               sx={navButtonStyles}
