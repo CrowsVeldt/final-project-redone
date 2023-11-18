@@ -1,6 +1,7 @@
-import { Outlet } from "react-router-dom";
-import Nav from "../components/sections/Nav";
 import { Box, Divider } from "@chakra-ui/react";
+import { Outlet } from "react-router-dom";
+import Footer from "../components/sections/Footer";
+import Nav from "../components/sections/Nav";
 
 const Root = () => {
   return (
@@ -9,7 +10,7 @@ const Root = () => {
       <Box maxW="92%" mx="auto">
         <Divider />
         <Outlet />
-        {/* <Footer /> */}
+        <Footer />
       </Box>
     </>
   );
