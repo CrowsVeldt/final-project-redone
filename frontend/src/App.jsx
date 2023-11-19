@@ -17,6 +17,8 @@ import RequireAuth from "./utils/RequireAuth";
 import AuthContext from "./context/AuthContext";
 import AutoLogin from "./utils/AutoLogin";
 import ErrorPage from "./error-page.jsx";
+import Blog from "./pages/public/Blog.jsx";
+import SupportPage from "./pages/public/Support.jsx";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -26,13 +28,15 @@ function App() {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route element={<AutoLogin />}>
           <Route index loader={getAllProducts} element={<Products />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="checkout" element={<Checkout />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/support" element={<SupportPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route element={<RequireAuth user={user} />}>
-            <Route path="profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Route>
       </Route>
