@@ -55,7 +55,7 @@ export default function ShoppingCartModal(props) {
             <Button
               onClick={() => {
                 onClose();
-                nav("/");
+                nav("/checkout");
               }}
             >
               Checkout
