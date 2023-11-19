@@ -64,7 +64,7 @@ export default function Nav() {
             </NavButton>
           </Chlink>
         </ButtonGroup>
-        <ButtonGroup w="40%" flexDirection={["column", "row"]}>
+        <ButtonGroup w="45%" flexDirection={["column", "row"]}>
           <FormControl id="shopping-cart-modal-control">
             <ShoppingCartModal id="shopping-cart-modal" />
           </FormControl>
