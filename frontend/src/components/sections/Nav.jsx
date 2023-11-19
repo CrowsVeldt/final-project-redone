@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   Flex,
   FormControl,
+  Link as Chlink,
   Icon,
   Text,
   useDisclosure,
@@ -18,11 +19,11 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import AuthContext from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/useLogout";
 import ShoppingCartModal from "./ShoppingCart";
 
-const Nav = () => {
+export default function Nav() {
   const { user } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -86,11 +87,11 @@ const Nav = () => {
         sx={navStyles}
       >
         <ButtonGroup w="35%">
-          <Link to="/">
+          <Chlink as={Link} to="/">
             <NavButton>
               <Icon as={HomeOutlinedIcon} boxSize={[null, "2em"]} />
             </NavButton>
-          </Link>
+          </Chlink>
         </ButtonGroup>
         <ButtonGroup w="40%" flexDirection={["column", "row"]}>
           {}
@@ -101,20 +102,20 @@ const Nav = () => {
             </Button>
           </FormControl>
           {!user && (
-            <Link to="/login">
+            <Chlink as={Link} to="/login">
               <Button sx={navButtonStyles} variant="outline">
                 <Icon as={LoginIcon} />
                 Login
               </Button>
-            </Link>
+            </Chlink>
           )}
           {!user && (
-            <Link to="/register">
+            <Chlink as={Link} to="/register">
               <Button sx={navButtonStyles} variant="outline">
                 <Icon as={HowToRegIconOutlined} />
                 Register
               </Button>
-            </Link>
+            </Chlink>
           )}
           {user && (
             <Button sx={navButtonStyles} variant="outline" onClick={logout}>
@@ -123,12 +124,12 @@ const Nav = () => {
             </Button>
           )}
           {user && (
-            <Link to="/profile">
+            <Chlink as={Link} to="/profile">
               <Button sx={navButtonStyles} variant="outline">
                 <Icon as={PersonOutlinedIcon} />
                 <Text ml={1}>{user?.user?.user_name}</Text>
               </Button>
-            </Link>
+            </Chlink>
           )}
         </ButtonGroup>
       </Flex>
@@ -137,6 +138,4 @@ const Nav = () => {
       )}
     </Box>
   );
-};
-
-export default Nav;
+}

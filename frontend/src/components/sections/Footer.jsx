@@ -12,11 +12,11 @@ const navButtonStyles = {
   border: "2px transparent solid",
 };
 
-const Footer = () => {
+export default function Footer() {
   return (
     <Box bottom="0" left="0" width="100%" bg="twitter.200">
       <ButtonGroup w={"35%"}>
-        <Link to="/about">
+        <Chlink as={Link} to="/about">
           <Button
             sx={navButtonStyles}
             variant="outline"
@@ -24,28 +24,26 @@ const Footer = () => {
           >
             About
           </Button>
-        </Link>
+        </Chlink>
 
-        <Link to="/contact">
+        <Chlink as={Link} to="/contact">
           <Button sx={navButtonStyles} variant="outline">
             Contact
           </Button>
-        </Link>
+        </Chlink>
 
-        <Link to="/blog">
+        <Chlink as={Link} to="/blog">
           <Button sx={navButtonStyles} variant="outline">
             Blog
           </Button>
-        </Link>
+        </Chlink>
 
-        <Link to="/support">
+        <Chlink as={Link} to="/support">
           <Button sx={navButtonStyles} variant="outline">
             Tech support
           </Button>
-        </Link>
+        </Chlink>
       </ButtonGroup>
     </Box>
   );
-};
-
-export default Footer;
+}
