@@ -65,17 +65,6 @@ export default function Nav() {
           </Chlink>
         </ButtonGroup>
         <ButtonGroup w="45%" flexDirection={["column", "row"]}>
-          <FormControl id="shopping-cart-modal-control">
-            <ShoppingCartModal id="shopping-cart-modal" />
-          </FormControl>
-          {!user && (
-            <Chlink as={Link} to="/login">
-              <Button sx={navButtonStyles} variant="outline">
-                <Icon as={LoginIcon} fontSize={"3xl"} />
-                Login
-              </Button>
-            </Chlink>
-          )}
           {!user && (
             <Chlink as={Link} to="/register">
               <Button sx={navButtonStyles} variant="outline">
@@ -84,11 +73,13 @@ export default function Nav() {
               </Button>
             </Chlink>
           )}
-          {user && (
-            <Button sx={navButtonStyles} variant="outline" onClick={logout}>
-              <Icon as={LogoutIcon} fontSize={"3xl"} />
-              Logout
-            </Button>
+          {!user && (
+            <Chlink as={Link} to="/login">
+              <Button sx={navButtonStyles} variant="outline">
+                <Icon as={LoginIcon} fontSize={"3xl"} />
+                Login
+              </Button>
+            </Chlink>
           )}
           {user && (
             <Chlink as={Link} to="/profile">
@@ -98,6 +89,15 @@ export default function Nav() {
               </Button>
             </Chlink>
           )}
+          {user && (
+            <Button sx={navButtonStyles} variant="outline" onClick={logout}>
+              <Icon as={LogoutIcon} fontSize={"3xl"} />
+              Logout
+            </Button>
+          )}
+          <FormControl id="shopping-cart-modal-control">
+            <ShoppingCartModal id="shopping-cart-modal" />
+          </FormControl>
         </ButtonGroup>
       </Flex>
     </Box>
