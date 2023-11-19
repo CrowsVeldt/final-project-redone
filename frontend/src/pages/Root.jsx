@@ -10,8 +10,8 @@ const Root = () => {
       <Box maxW="92%" mx="auto">
         <Divider />
         <Outlet />
-        <Footer />
       </Box>
+      <Footer />
     </>
   );
 };

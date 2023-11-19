@@ -1,4 +1,5 @@
-import { Box, Button, ButtonGroup, Link } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Link as Chlink } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const navButtonStyles = {
   _hover: {
@@ -13,10 +14,14 @@ const navButtonStyles = {
 
 const Footer = () => {
   return (
-    <Box position="absolute" bottom="0" left="0" width="100%" bg="twitter.200">
+    <Box bottom="0" left="0" width="100%" bg="twitter.200">
       <ButtonGroup w={"35%"}>
         <Link to="/about">
-          <Button sx={navButtonStyles} variant="outline">
+          <Button
+            sx={navButtonStyles}
+            variant="outline"
+            onClick={() => console.log("about")}
+          >
             About
           </Button>
         </Link>
