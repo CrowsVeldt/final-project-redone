@@ -1,8 +1,6 @@
 import {
   Badge,
-  Box,
   Button,
-  Divider,
   Icon,
   Modal,
   ModalCloseButton,
@@ -11,6 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Table,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
@@ -66,17 +65,12 @@ export default function ShoppingCartModal() {
           <ModalHeader>Shopping cart</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Box>
+            <Table>
               {cartItems.map((item, index) => {
-                return (
-                  <Box key={index}>
-                    <CartItem product={item} />
-                    <Divider />
-                  </Box>
-                );
+                return <CartItem product={item} key={index} />;
               })}
               {cartItems ? `Total: $${totalPrice}` : ""}
-            </Box>
+            </Table>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
