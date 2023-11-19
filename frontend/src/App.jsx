@@ -10,7 +10,7 @@ import { AuthContext } from "./context/AuthContext";
 import Root from "./pages/Root";
 import About from "./pages/public/About";
 import Blog from "./pages/public/Blog.jsx";
-import Checkout from "./pages/public/Products/Checkout.jsx";
+import Checkout from "./pages/public/Checkout.jsx";
 import Contact from "./pages/public/Contact";
 import Login from "./pages/public/Login";
 import Products, { getAllProducts } from "./pages/public/Products/Products";

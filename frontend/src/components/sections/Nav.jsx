@@ -8,8 +8,9 @@ import {
   Icon,
   Text,
   useDisclosure,
+  Badge,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import HowToRegIconOutlined from "@mui/icons-material/HowToRegOutlined";
@@ -18,45 +19,15 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/useLogout";
 import ShoppingCartModal from "./ShoppingCart";
+import { hamburgerStyles, navButtonStyles, navStyles } from "../styles";
 
 export default function Nav() {
-  const { user } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { user } = useContext(AuthContext);
   const logout = useLogout();
-
-  const navStyles = {
-    display: [menuOpen ? "flex" : "none", "flex"],
-    gap: 5,
-    p: [2, 5, 7],
-  };
-
-  const navButtonStyles = {
-    _hover: {
-      cursor: "pointer",
-      border: "2px",
-      borderColor: "black",
-    },
-
-    width: "100%",
-    fontSize: ["16px", "16px", "20px"],
-    border: "2px transparent solid",
-  };
-
-  const hamburgerStyles = {
-    _hover: {
-      cursor: "pointer",
-      border: 0,
-      borderColor: "none",
-    },
-    left: 0,
-    border: "none",
-    display: ["inherit", "none"],
-  };
 
   const handleMenuClick = () => {
     setMenuOpen(!menuOpen);
@@ -84,7 +55,7 @@ export default function Nav() {
         justifyContent="space-between"
         alignItems={["center"]}
         direction={["column", "row"]}
-        sx={navStyles}
+        sx={navStyles(menuOpen)}
       >
         <ButtonGroup w="35%">
           <Chlink as={Link} to="/">
@@ -94,12 +65,8 @@ export default function Nav() {
           </Chlink>
         </ButtonGroup>
         <ButtonGroup w="40%" flexDirection={["column", "row"]}>
-          {}
           <FormControl id="shopping-cart-modal-control">
-            <Button sx={navButtonStyles} variant={"outline"} onClick={onOpen}>
-              <Icon as={ShoppingCartOutlinedIcon} />
-              Cart
-            </Button>
+            <ShoppingCartModal id="shopping-cart-modal" />
           </FormControl>
           {!user && (
             <Chlink as={Link} to="/login">
@@ -133,9 +100,6 @@ export default function Nav() {
           )}
         </ButtonGroup>
       </Flex>
-      {isOpen && (
-        <ShoppingCartModal id="shopping-cart-modal" fun={{ isOpen, onClose }} />
-      )}
     </Box>
   );
 }

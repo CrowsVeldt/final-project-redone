@@ -10,7 +10,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import axios from "../../api/axios";
-import AuthContext from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import PasswordInput from "../../components/inputs/PasswordInput";
 
 export default function Login() {

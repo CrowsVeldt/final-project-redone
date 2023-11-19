@@ -19,7 +19,7 @@ export default function CartItem(props) {
                 removeFromCart(product);
               }}
             >
-              {"<"}
+              {"-"}
             </Button>
             <Text>{`(${product.quantity})`}</Text>
             <Button
@@ -29,7 +29,7 @@ export default function CartItem(props) {
                 addToCart(product);
               }}
             >
-              {">"}
+              {"+"}
             </Button>
           </Flex>
         </Flex>
