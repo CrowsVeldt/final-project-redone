@@ -49,14 +49,14 @@ export default function ShoppingCartModal() {
             fontSize={"2xs"}
             colorScheme="purple"
             position={"relative"}
-            left={"1.6rem"}
-            bottom={"0.35rem"}
+            left={".4rem"}
+            top={".4rem"}
             borderRadius={"full"}
           >
             {totalProducts}
           </Badge>
         )}
-        <Icon as={ShoppingCartIcon} fontSize={"4xl"} />
+        <Icon as={ShoppingCartIcon} fontSize={"3xl"} />
         Cart
       </Button>
 

@@ -71,7 +71,7 @@ export default function Nav() {
           {!user && (
             <Chlink as={Link} to="/login">
               <Button sx={navButtonStyles} variant="outline">
-                <Icon as={LoginIcon} />
+                <Icon as={LoginIcon} fontSize={"3xl"} />
                 Login
               </Button>
             </Chlink>
@@ -79,21 +79,21 @@ export default function Nav() {
           {!user && (
             <Chlink as={Link} to="/register">
               <Button sx={navButtonStyles} variant="outline">
-                <Icon as={HowToRegIconOutlined} />
+                <Icon as={HowToRegIconOutlined} fontSize={"3xl"} />
                 Register
               </Button>
             </Chlink>
           )}
           {user && (
             <Button sx={navButtonStyles} variant="outline" onClick={logout}>
-              <Icon as={LogoutIcon} />
+              <Icon as={LogoutIcon} fontSize={"3xl"} />
               Logout
             </Button>
           )}
           {user && (
             <Chlink as={Link} to="/profile">
               <Button sx={navButtonStyles} variant="outline">
-                <Icon as={PersonOutlinedIcon} />
+                <Icon as={PersonOutlinedIcon} fontSize={"3xl"} />
                 <Text ml={1}>{user?.user?.user_name}</Text>
               </Button>
             </Chlink>
