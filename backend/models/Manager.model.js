@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const managerSchema = new mongoose.Schema({
   managers_name: {
@@ -26,11 +26,11 @@ const managerSchema = new mongoose.Schema({
   token: { type: String },
 });
 
-managerSchema.pre('save', async function (next) {
+managerSchema.pre("save", async function (next) {
   const hash = await bcrypt.hash(this.user_password, 10);
   this.user_password = hash;
 
   next();
 });
 
-module.exports = mongoose.model('manager', managerSchema);
+module.exports = mongoose.model("manager", managerSchema);

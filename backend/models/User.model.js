@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
   user_name: {
@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
     {
       order: {
         type: mongoose.Types.ObjectId,
-        ref: 'orders',
+        ref: "orders",
       },
     },
   ],
@@ -61,11 +61,11 @@ const userSchema = new mongoose.Schema({
   token: { type: String },
 });
 
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
   const hash = await bcrypt.hash(this.user_password, 10);
   this.user_password = hash;
 
   next();
 });
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model("user", userSchema);

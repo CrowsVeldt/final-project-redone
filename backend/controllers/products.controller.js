@@ -1,15 +1,16 @@
-const Product = require('../models/Product.model');
-const Category = require('../models/Category.model');
-const mongoose = require('mongoose');
-const objectName = 'product';
+const Product = require("../models/Product.model");
+const Category = require("../models/Category.model");
+const mongoose = require("mongoose");
+const objectName = "product";
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find({}).populate('categories.category');
+    const products = await Product.find({}).populate("categories.category");
 
     return res.status(200).json({
       success: true,
       message: `success to find all ${objectName}s - for managers`,
+
       products,
     });
   } catch (error) {
@@ -24,7 +25,7 @@ const getAllProductById = async (req, res) => {
   const productId = req.params.productId;
   try {
     const products = await Product.find(productId).populate(
-      'categories.category',
+      "categories.category"
     );
 
     return res.status(200).json({
@@ -60,11 +61,11 @@ const addProduct = async (req, res) => {
           const newCategory = await Category.findOneAndUpdate(
             { category_name: category },
             { category_name: category },
-            { upsert: true },
+            { upsert: true }
           );
           return { category: newCategory._id };
         }
-      }),
+      })
     );
 
     console.log(categoriesObjectsArray);

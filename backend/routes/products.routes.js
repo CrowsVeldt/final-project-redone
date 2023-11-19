@@ -1,5 +1,8 @@
-const router = require('express').Router();
-const { addProduct, getAllProducts } = require('../controllers/products.controller');
+const router = require("express").Router();
+const {
+  addProduct,
+  getAllProducts,
+} = require("../controllers/products.controller");
 // const authManager = require('../middlewares/authUser');
 
 /* GET users listing. */
@@ -10,9 +13,9 @@ const { addProduct, getAllProducts } = require('../controllers/products.controll
 // addProduct
 // updateProduct
 // removeProduct
-router.get('/managers/all', getAllProducts);
+router.get("/managers/all", getAllProducts);
 // router.get('/managers/:productId', getAllProductById);
-router.post('/managers', addProduct);
+router.post("/managers", addProduct);
 // router.put('/managers', getAllProductById);
 // router.delete('/managers', getAllProductById);
 
@@ -20,7 +23,7 @@ router.post('/managers', addProduct);
 
 // /* Customers routes */
 // // getAllProducts
-router.get('/customers/all', getAllProducts);
+router.get("/customers/all", getAllProducts);
 // // getProductsById
 
 // // queryProducts

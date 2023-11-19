@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require('../models/User.model');
-const jwt = require('jsonwebtoken');
+const User = require("../models/User.model");
+const jwt = require("jsonwebtoken");
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   const cookies = req.cookies;
 
   if (!cookies.token) return res.sendStatus(401);

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
   product_name: {
@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema({
   product_price: {
     type: Number,
     required: true,
-    min: [1, 'Must be from 1 and above'],
+    min: [1, "Must be from 1 and above"],
   },
 
   product_image: { type: String },
@@ -23,10 +23,10 @@ const productSchema = new mongoose.Schema({
     {
       category: {
         type: mongoose.Types.ObjectId,
-        ref: 'categories',
+        ref: "categories",
       },
     },
   ],
 });
 
-module.exports = mongoose.model('product', productSchema);
+module.exports = mongoose.model("product", productSchema);
