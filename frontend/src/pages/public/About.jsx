@@ -1,8 +1,7 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import { Box, Heading, Text } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 
-const About = () => {
-
+export default function About() {
   return (
     <Box>
       <Heading>This is an about page</Heading>
@@ -24,6 +23,4 @@ const About = () => {
       </Text>
     </Box>
   );
-};
-
-export default About;
+}

@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import PasswordInput from "../../components/inputs/PasswordInput";
 
-const Register = () => {
+export default function Register() {
   const [values, setValues] = useState({
     user_name: "",
     user_email: "",
@@ -121,6 +121,4 @@ const Register = () => {
       {/* text for "have account? -> link to login" */}
     </Box>
   );
-};
-
-export default Register;
+}

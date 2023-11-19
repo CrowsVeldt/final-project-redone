@@ -1,18 +1,18 @@
 import {
-  Box,
-  Center,
   Card,
   CardBody,
+  CardFooter,
+  Center,
+  Box,
+  Button,
+  Heading,
+  HStack,
   Image,
   Stack,
-  HStack,
-  Heading,
   Text,
-  CardFooter,
-  Button,
 } from "@chakra-ui/react";
 
-const ProductCard = ({ product, addToCart }) => {
+export default function ({ product, addToCart }) {
   return (
     <Box mt={2} bgColor={"whiteAlpha.900"}>
       <Center>
@@ -59,6 +59,4 @@ const ProductCard = ({ product, addToCart }) => {
       </Center>
     </Box>
   );
-};
-
-export default ProductCard;
+}

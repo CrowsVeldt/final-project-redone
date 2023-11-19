@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import useRefreshToken from '../hooks/useRefreshToken';
-import AuthContext from '../context/AuthContext';
-import { Center, Spinner } from '@chakra-ui/react';
-import { Outlet } from 'react-router-dom';
+import { Center, Spinner } from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import useRefreshToken from "../hooks/useRefreshToken";
 
-const AutoLogin = () => {
+export default function AutoLogin() {
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
   const { user } = useContext(AuthContext);
@@ -26,13 +26,13 @@ const AutoLogin = () => {
   return (
     <>
       {isLoading ? (
-        <Center mt={['200px', '400px']}>
+        <Center mt={["200px", "400px"]}>
           <Spinner
-            thickness='5px'
-            speed='0.65s'
-            emptyColor='gray.200'
-            color='blue.500'
-            size='xl'
+            thickness="5px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
           />
         </Center>
       ) : (
@@ -40,6 +40,4 @@ const AutoLogin = () => {
       )}
     </>
   );
-};
-
-export default AutoLogin;
+}

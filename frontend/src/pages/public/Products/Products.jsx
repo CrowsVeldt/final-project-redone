@@ -1,10 +1,10 @@
+import { Box, Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
-import axios from "../../../api/axios";
 import { useLoaderData } from "react-router-dom";
-import { Box, Flex, Text, Heading, Divider } from "@chakra-ui/react";
 import localforage from "localforage";
-import ProductCard from "../../../components/product/ProductCard";
+import axios from "../../../api/axios";
 import { CartContext } from "../../../context/CartContext";
+import ProductCard from "../../../components/product/ProductCard";
 import Pagination from "./Pagination";
 
 export const getAllProducts = async () => {
@@ -18,7 +18,7 @@ export const getAllProducts = async () => {
   }
 };
 
-const Products = () => {
+export default function Products() {
   const initialProducts = useLoaderData();
   const [products, setProducts] = useState([...initialProducts]);
   const { addToCart } = useContext(CartContext);
@@ -96,6 +96,4 @@ const Products = () => {
       />
     </Box>
   );
-};
-
-export default Products;
+}

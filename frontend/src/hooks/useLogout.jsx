@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
-import useAxiosPrivate from "./useAxiosPrivate";
 import { toast } from "react-toastify";
+import useAxiosPrivate from "./useAxiosPrivate";
+import { AuthContext } from "../context/AuthContext";
 
 const useLogout = () => {
   const { setUser } = useContext(AuthContext);

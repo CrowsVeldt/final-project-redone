@@ -13,7 +13,7 @@ import axios from "../../api/axios";
 import AuthContext from "../../context/AuthContext";
 import PasswordInput from "../../components/inputs/PasswordInput";
 
-const Login = () => {
+export default function Login() {
   const { user, setUser } = useContext(AuthContext);
   const [values, setValues] = useState({
     user_email: "",
@@ -93,6 +93,4 @@ const Login = () => {
       {/* text for "have account? -> link to login" */}
     </Box>
   );
-};
-
-export default Login;
+}

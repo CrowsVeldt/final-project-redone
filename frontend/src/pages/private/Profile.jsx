@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import AuthContext from "../../context/AuthContext";
 import { Box, Button, Heading, Input, Stack, Text } from "@chakra-ui/react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { AuthContext } from "../../context/AuthContext";
 import DeleteUserAlert from "../../components/info/DeleteUserAlert";
 
 // const useStat = () => {
@@ -14,7 +14,7 @@ import DeleteUserAlert from "../../components/info/DeleteUserAlert";
 //   ];
 // };
 
-const Profile = () => {
+export default function Profile() {
   const { user, setUser } = useContext(AuthContext);
   const [isEditing, setIsEditing] = useState(false);
   const axiosPrivateRoute = useAxiosPrivate();
@@ -210,7 +210,7 @@ const Profile = () => {
       {isEditing && <DeleteUserAlert id="Delete user popup" />}
     </Box>
   );
-};
+}
 
 function convertToBase64(file) {
   return new Promise((resolve, reject) => {
@@ -225,5 +225,3 @@ function convertToBase64(file) {
     };
   });
 }
-
-export default Profile;

@@ -1,12 +1,12 @@
-import { useState } from "react";
 import {
-  InputGroup,
-  Input,
   Button,
-  InputRightElement,
-  FormLabel,
   FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
+import { useState } from "react";
 
 export default function PasswordInput(props) {
   const [show, setShow] = useState(false);

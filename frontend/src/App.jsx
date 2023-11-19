@@ -1,24 +1,24 @@
 import { useContext } from "react";
 import {
   createBrowserRouter,
+  createRoutesFromElements,
   Route,
   RouterProvider,
-  createRoutesFromElements,
 } from "react-router-dom";
+import ErrorPage from "./error-page.jsx";
+import { AuthContext } from "./context/AuthContext";
 import Root from "./pages/Root";
-import Products, { getAllProducts } from "./pages/public/Products/Products";
 import About from "./pages/public/About";
+import Blog from "./pages/public/Blog.jsx";
 import Checkout from "./pages/public/Products/Checkout.jsx";
 import Contact from "./pages/public/Contact";
-import Register from "./pages/public/Register";
 import Login from "./pages/public/Login";
+import Products, { getAllProducts } from "./pages/public/Products/Products";
 import Profile from "./pages/private/Profile";
-import RequireAuth from "./utils/RequireAuth";
-import AuthContext from "./context/AuthContext";
-import AutoLogin from "./utils/AutoLogin";
-import ErrorPage from "./error-page.jsx";
-import Blog from "./pages/public/Blog.jsx";
+import Register from "./pages/public/Register";
 import SupportPage from "./pages/public/Support.jsx";
+import AutoLogin from "./utils/AutoLogin";
+import RequireAuth from "./utils/RequireAuth";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -29,12 +29,12 @@ function App() {
         <Route element={<AutoLogin />}>
           <Route index loader={getAllProducts} element={<Products />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/support" element={<SupportPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/support" element={<SupportPage />} />
           <Route element={<RequireAuth user={user} />}>
             <Route path="/profile" element={<Profile />} />
           </Route>

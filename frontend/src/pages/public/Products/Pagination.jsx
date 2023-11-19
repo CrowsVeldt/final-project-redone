@@ -1,16 +1,16 @@
-import { Box, Button, ButtonGroup } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup } from "@chakra-ui/react";
 
-const Pagination = ({
+export default function Pagination({
   currentPage,
   productsPerPage,
   totalProducts,
   onPageChange,
-}) => {
+}) {
   const totalPages = Math.ceil(totalProducts / productsPerPage);
 
   const handleClick = (page) => {
-    onPageChange(page)
-  }
+    onPageChange(page);
+  };
 
   const renderPaginationButtons = () => {
     const buttons = [];
@@ -19,13 +19,13 @@ const Pagination = ({
         <Button
           key={i}
           onClick={() => handleClick(i)}
-          colorScheme={currentPage === i ? 'cyan' : 'gray'}
+          colorScheme={currentPage === i ? "cyan" : "gray"}
         >
           {i}
-        </Button>,
+        </Button>
       );
     }
-    return buttons
+    return buttons;
   };
 
   return (
@@ -33,6 +33,4 @@ const Pagination = ({
       <ButtonGroup spacing={2}>{renderPaginationButtons()}</ButtonGroup>
     </Box>
   );
-};
-
-export default Pagination;
+}

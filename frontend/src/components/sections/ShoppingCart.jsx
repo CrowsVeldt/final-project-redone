@@ -1,16 +1,16 @@
 import {
   Box,
   Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   Divider,
+  Modal,
+  ModalCloseButton,
+  ModalContent,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import CartItem from "../product/CartItem";
@@ -19,10 +19,6 @@ export default function ShoppingCartModal(props) {
   const { isOpen, onClose } = props.fun;
   const { cartItems } = useContext(CartContext);
   const nav = useNavigate();
-
-  const calculateTotal = (priceArray) => {
-    return priceArray.reduce((a, b) => a + b);
-  };
 
   return (
     <>

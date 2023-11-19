@@ -1,7 +1,7 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Heading, Text } from "@chakra-ui/react";
+import React from "react";
 
-const Contact = () => {
+export default function Contact() {
   return (
     <Box>
       <Heading>This is a contact page</Heading>
@@ -23,6 +23,4 @@ const Contact = () => {
       </Text>
     </Box>
   );
-};
-
-export default Contact;
+}

@@ -1,4 +1,3 @@
-import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -11,7 +10,8 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
-import AuthContext from "../../context/AuthContext";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function DeleteUserAlert(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
