@@ -7,10 +7,8 @@ import {
   Link as Chlink,
   Icon,
   Text,
-  useDisclosure,
-  Badge,
 } from "@chakra-ui/react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import HowToRegIconOutlined from "@mui/icons-material/HowToRegOutlined";
