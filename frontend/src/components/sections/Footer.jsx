@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Link, Text } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Link } from "@chakra-ui/react";
 
 const navButtonStyles = {
   _hover: {
@@ -13,7 +13,7 @@ const navButtonStyles = {
 
 const Footer = () => {
   return (
-    <Box>
+    <Box position="absolute" bottom="0" left="0" width="100%" bg="twitter.200">
       <ButtonGroup w={"35%"}>
         <Link to="/about">
           <Button sx={navButtonStyles} variant="outline">
@@ -24,6 +24,18 @@ const Footer = () => {
         <Link to="/contact">
           <Button sx={navButtonStyles} variant="outline">
             Contact
+          </Button>
+        </Link>
+
+        <Link to="/blog">
+          <Button sx={navButtonStyles} variant="outline">
+            Blog
+          </Button>
+        </Link>
+
+        <Link to="/support">
+          <Button sx={navButtonStyles} variant="outline">
+            Tech support
           </Button>
         </Link>
       </ButtonGroup>
