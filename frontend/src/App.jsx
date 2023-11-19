@@ -8,6 +8,7 @@ import {
 import Root from "./pages/Root";
 import Products, { getAllProducts } from "./pages/public/Products/Products";
 import About from "./pages/public/About";
+import Checkout from "./pages/public/Products/Checkout.jsx";
 import Contact from "./pages/public/Contact";
 import Register from "./pages/public/Register";
 import Login from "./pages/public/Login";
@@ -29,6 +30,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route element={<RequireAuth user={user} />}>
             <Route path="profile" element={<Profile />} />
           </Route>
