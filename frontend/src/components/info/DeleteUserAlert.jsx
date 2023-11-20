@@ -40,7 +40,7 @@ export default function DeleteUserAlert(props) {
 
   return (
     <>
-      <Button id={props.id} colorScheme="red" onClick={onOpen}>
+      <Button id={props.id} mt={4} colorScheme="red" onClick={onOpen}>
         Delete Account
       </Button>
 

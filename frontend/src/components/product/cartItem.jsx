@@ -38,32 +38,3 @@ export default function CartItem(props) {
     </Tr>
   );
 }
-
-// <Flex direction={"column"}>
-//   <Flex>
-//     <Text>{product.product_name}</Text>
-//     <Flex ms={"10"}>
-//       <Button
-//         variant={"ghost"}
-//         h={"1.5em"}
-//         onClick={() => {
-//           removeFromCart(product);
-//         }}
-//       >
-//         {"-"}
-//       </Button>
-//       <Text>{`(${product.quantity})`}</Text>
-//       <Button
-//         variant={"ghost"}
-//         h={"1.5em"}
-//         onClick={() => {
-//           addToCart(product);
-//         }}
-//       >
-//         {"+"}
-//       </Button>
-//     </Flex>
-//   </Flex>
-//   <Text>{`$${product.product_price * product.quantity}`}</Text>
-// </Flex>
-// <CloseButton onClick={() => removeFromCart(product, true)} />

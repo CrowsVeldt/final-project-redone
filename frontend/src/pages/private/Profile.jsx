@@ -1,4 +1,12 @@
-import { Box, Button, Heading, Input, Stack, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Heading,
+  Input,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
@@ -44,6 +52,7 @@ export default function Profile() {
         values
       );
 
+      console.log(response?.data?.user);
       setUser(response?.data?.user);
       setIsEditing(false);
       toast.success(response?.data?.message);
@@ -53,7 +62,6 @@ export default function Profile() {
   };
 
   const handleFileUpload = async (e) => {
-    debugger;
     const file = e.target.files[0];
     const base64image = await convertToBase64(file);
     setValues((prevValues) => ({ ...prevValues, user_avatar: base64image }));
@@ -78,6 +86,20 @@ export default function Profile() {
 
   return (
     <Box minH="65vh" py={10} px={4}>
+      <Avatar
+        name={values.user_name ? `${values.user_name}` : ""}
+        src={user && user.image ? user.image : ""}
+        size={"xl"}
+      />
+      {isEditing && (
+        <Input
+          name="user_avatar"
+          type="file"
+          defaultValue={values.user_avatar}
+          onChange={handleFileUpload}
+          accept=".jpeg, .png, .jpg"
+        />
+      )}
       <Heading mb={6}>My Profile</Heading>
       <Stack spacing={2}>
         <Heading as="h3" fontSize="lg">
@@ -131,6 +153,7 @@ export default function Profile() {
             user?.user.user_phone
           )}
         </Text>
+        {/*}
         <Text fontSize="md">
           <Text as="span" fontWeight="bold">
             Avatar:{" "}
@@ -146,7 +169,7 @@ export default function Profile() {
           ) : (
             user?.user.user_avatar
           )}
-        </Text>
+        </Text> */}
 
         <Heading as="h3" fontSize="lg">
           Address
