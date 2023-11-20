@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   try {
     const user = await User.findOne({ token: refreshToken });
 
-    console.log(user);
+    //console.log(user);
     if (!user) return res.sendStatus(403);
 
     const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);

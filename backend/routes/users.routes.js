@@ -5,7 +5,7 @@ const {
   loginCustomer,
   registerCustomer,
   updateCustomer,
-} = require("../controllers/Users.controller");
+} = require("../controllers/users.controller");
 const authUser = require("../middlewares/authUser");
 
 /* GET users listing. */

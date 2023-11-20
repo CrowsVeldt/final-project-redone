@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   addProduct,
   getAllProducts,
+  getProductById,
 } = require("../controllers/products.controller");
 // const authManager = require('../middlewares/authUser');
 
@@ -25,6 +26,7 @@ router.post("/managers", addProduct);
 // // getAllProducts
 router.get("/customers/all", getAllProducts);
 // // getProductsById
+router.post("/by-id", getProductById);
 
 // // queryProducts
 

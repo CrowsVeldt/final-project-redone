@@ -93,4 +93,22 @@ const addProduct = async (req, res) => {
   }
 };
 
-module.exports = { addProduct, getAllProductById, getAllProducts };
+const getProductById = async (req, res, next) => {
+  const { data } = req.body;
+  console.log(data);
+
+  try {
+    const product = await Product.findOne({ _id: data });
+
+    res.send(product);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = {
+  addProduct,
+  getAllProductById,
+  getAllProducts,
+  getProductById,
+};
