@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { CartContext } from "../../context/CartContext";
 import CartItem from "../product/CartItem";
-import { navButtonStyles } from "../styles";
+import { navButtonStyles } from "../../themes/componentStyles";
 
 export default function ShoppingCartModal() {
   const [totalPrice, setTotalPrice] = useState(0);

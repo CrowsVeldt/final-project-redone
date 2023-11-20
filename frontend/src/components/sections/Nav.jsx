@@ -20,7 +20,11 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { AuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/useLogout";
 import ShoppingCartModal from "./ShoppingCart";
-import { hamburgerStyles, navButtonStyles, navStyles } from "../styles";
+import {
+  hamburgerStyles,
+  navButtonStyles,
+  navStyles,
+} from "../../themes/componentStyles";
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
