@@ -58,12 +58,12 @@ export default function Profile() {
       setIsEditing(false);
       toast.success(response?.data?.message);
     } catch (error) {
-      toast.error(error?.response?.data.message);
+      toast.error(error?.response?.data?.message);
     }
   };
 
   const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
+    const file = e?.target?.files[0];
     const base64image = await convertToBase64(file);
     setValues((prevValues) => ({ ...prevValues, user_avatar: base64image }));
   };
@@ -72,8 +72,8 @@ export default function Profile() {
     setValues((prevValues) => ({
       ...prevValues,
       user_address: {
-        ...prevValues.user_address,
-        [e.target.name]: e.target.value,
+        ...prevValues?.user_address,
+        [e.target.name]: e?.target?.value,
       },
     }));
   };
@@ -81,7 +81,7 @@ export default function Profile() {
   const handleChange = (e) => {
     setValues((prevValues) => ({
       ...prevValues,
-      [e.target.name]: e.target.value,
+      [e?.target?.name]: e?.target?.value,
     }));
   };
 
@@ -92,7 +92,6 @@ export default function Profile() {
         <Input
           name="user_avatar"
           type="file"
-          defaultValue={values.user_avatar}
           onChange={handleFileUpload}
           accept=".jpeg, .png, .jpg"
         />
@@ -111,7 +110,7 @@ export default function Profile() {
               name="user_name"
               type="text"
               placeholder="Type in your name"
-              value={values.user_name || ""}
+              value={values?.user_name || ""}
               onChange={handleChange}
             />
           ) : (
@@ -127,7 +126,7 @@ export default function Profile() {
               name="user_email"
               type="email"
               placeholder="Enter email"
-              value={values.user_email || ""}
+              value={values?.user_email || ""}
               onChange={handleChange}
             />
           ) : (
@@ -143,7 +142,7 @@ export default function Profile() {
               name="user_phone"
               type="text"
               placeholder="Enter phone"
-              value={values.user_phone || ""}
+              value={values?.user_phone || ""}
               onChange={handleChange}
             />
           ) : (
@@ -166,7 +165,7 @@ export default function Profile() {
               onChange={handleNestedChange}
             />
           ) : (
-            user?.user.user_city
+            user?.user?.user_city
           )}
         </Text>
         <Text fontSize="md">
@@ -176,7 +175,7 @@ export default function Profile() {
           {isEditing ? (
             <Input
               name="building"
-              value={values.user_address?.building || ""}
+              value={values?.user_address?.building || ""}
               onChange={handleNestedChange}
               placeholder="Enter your building"
             />
@@ -191,7 +190,7 @@ export default function Profile() {
           {isEditing ? (
             <Input
               name="apartment"
-              value={values.user_address?.apartment || ""}
+              value={values?.user_address?.apartment || ""}
               onChange={handleNestedChange}
               placeholder="Enter your apartment"
             />
