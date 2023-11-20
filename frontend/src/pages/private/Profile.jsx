@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { AuthContext } from "../../context/AuthContext";
 import DeleteUserAlert from "../../components/info/DeleteUserAlert";
+import { convertToBase64 } from "../../utils/fileFuncs";
 
 // const useStat = () => {
 //   return [
@@ -62,12 +63,6 @@ export default function Profile() {
     }
   };
 
-  const handleFileUpload = async (e) => {
-    const file = e?.target?.files[0];
-    const base64image = await convertToBase64(file);
-    setValues((prevValues) => ({ ...prevValues, user_avatar: base64image }));
-  };
-
   const handleNestedChange = (e) => {
     setValues((prevValues) => ({
       ...prevValues,
@@ -76,6 +71,12 @@ export default function Profile() {
         [e.target.name]: e?.target?.value,
       },
     }));
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e?.target?.files[0];
+    const base64image = await convertToBase64(file);
+    setValues((prevValues) => ({ ...prevValues, user_avatar: base64image }));
   };
 
   const handleChange = (e) => {
@@ -211,18 +212,4 @@ export default function Profile() {
       {isEditing && <DeleteUserAlert id="Delete user popup" />}
     </Box>
   );
-}
-
-function convertToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
 }
