@@ -13,12 +13,15 @@ import Blog from "./pages/public/Blog.jsx";
 import Checkout from "./pages/public/Checkout.jsx";
 import Contact from "./pages/public/Contact";
 import Login from "./pages/public/Login";
-import Products, { getAllProducts } from "./pages/public/Products/Products";
+import Catalog, { getAllProducts } from "./pages/public/Products/Catalog";
 import Profile from "./pages/private/Profile";
 import Register from "./pages/public/Register";
 import SupportPage from "./pages/public/Support.jsx";
 import AutoLogin from "./utils/AutoLogin";
 import RequireAuth from "./utils/RequireAuth";
+import SingleProductPage, {
+  loader as productLoader,
+} from "./pages/public/Products/ProductPage.jsx";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -27,7 +30,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route element={<AutoLogin />}>
-          <Route index loader={getAllProducts} element={<Products />} />
+          <Route index loader={getAllProducts} element={<Catalog />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/checkout" element={<Checkout />} />
@@ -38,6 +41,11 @@ function App() {
           <Route element={<RequireAuth user={user} />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route
+            path="product/:productId"
+            element={<SingleProductPage />}
+            loader={productLoader}
+          />
         </Route>
       </Route>
     )

@@ -18,7 +18,7 @@ export const getAllProducts = async () => {
   }
 };
 
-export default function Products() {
+export default function Catalog() {
   const initialProducts = useLoaderData();
   const [products, setProducts] = useState([...initialProducts]);
   const { addToCart } = useContext(CartContext);
