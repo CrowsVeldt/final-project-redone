@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
     console.log(user);
     if (!user) return res.sendStatus(403);
 
-    const decoded = await jwt.verify(refreshToken, process.env.JWT_SECRET);
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
 
     if (!decoded) return res.sendStatus(403);
 
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
       _id: user._id,
     };
 
-    const customerToken = await jwt.sign(payload, process.env.JWT_SECRET, {
+    const customerToken = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: 30,
     });
 

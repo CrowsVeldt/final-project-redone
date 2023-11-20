@@ -51,22 +51,18 @@ const registerCustomer = async (req, res, next) => {
 const loginCustomer = async (req, res, next) => {
   try {
     const { user_email, user_password } = req.body;
-    console.log(req.body);
 
     const user = await UserModel.findOne({ user_email });
-
     if (!user) {
       throw new Error("Bad credentials");
     }
 
     const equal = await bcrypt.compare(user_password, user.user_password);
-
     if (!equal) {
       throw new Error("Bad credentials");
     }
 
     // user login success
-
     let payload = {
       _id: user._id,
     };
@@ -74,12 +70,10 @@ const loginCustomer = async (req, res, next) => {
     const customerToken = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: 30,
     });
-
     const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
 
-    // TODO add refresh token to user.tokens in DB (look at user model)
     const updateUser = await User.findByIdAndUpdate(
       user._id,
       {
@@ -117,7 +111,6 @@ const logoutCustomer = async (req, res, next) => {
   // במידה והטוקנים הם מסוג ריפרש טוקן אז צריך למחוק אותם מהדאטאבייס
 
   // קודם נבדוק אם קיים הדר של authorization
-  console.log(req);
   if (req.headers && req.headers.authorization) {
     try {
       const token = req.headers.authorization.split(" ")[1]; // ['bearer', 'ghfh43$R#!']

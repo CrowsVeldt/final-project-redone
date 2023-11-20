@@ -52,7 +52,9 @@ export default function Profile() {
         values
       );
 
-      console.log(response?.data?.user);
+      // updateUser isn't responding with an accessToken, which breaks the site
+      // need to refresh token(?)
+      console.log(response?.data);
       setUser(response?.data?.user);
       setIsEditing(false);
       toast.success(response?.data?.message);
