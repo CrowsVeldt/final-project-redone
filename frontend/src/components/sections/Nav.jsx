@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   ButtonGroup,
@@ -15,7 +16,6 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import PersonIcon from "@mui/icons-material/Person";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { AuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/useLogout";
@@ -78,7 +78,7 @@ export default function Nav() {
           {!user && (
             <Chlink as={Link} to="/login">
               <Button sx={navButtonStyles} variant="outline">
-                <Icon as={LoginIcon} fontSize={"3xl"} />
+                <Icon ml={1} as={LoginIcon} fontSize={"3xl"} />
                 Login
               </Button>
             </Chlink>
@@ -86,7 +86,11 @@ export default function Nav() {
           {user && (
             <Chlink as={Link} to="/profile">
               <Button sx={navButtonStyles} variant="outline">
-                <Icon as={PersonIcon} fontSize={"3xl"} />
+                <Avatar
+                  name={user?.user?.user_name}
+                  src={user?.user?.user_avatar}
+                  size={"sm"}
+                />
                 <Text ml={1}>{user?.user?.user_name}</Text>
               </Button>
             </Chlink>

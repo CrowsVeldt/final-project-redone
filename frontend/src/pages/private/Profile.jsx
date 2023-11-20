@@ -54,7 +54,6 @@ export default function Profile() {
 
       // updateUser isn't responding with an accessToken, which breaks the site
       // need to refresh token(?)
-      console.log(response?.data);
       setUser(response?.data?.user);
       setIsEditing(false);
       toast.success(response?.data?.message);
@@ -88,11 +87,7 @@ export default function Profile() {
 
   return (
     <Box minH="65vh" py={10} px={4}>
-      <Avatar
-        name={values.user_name ? `${values.user_name}` : ""}
-        src={user && user.image ? user.image : ""}
-        size={"xl"}
-      />
+      <Avatar name={values?.user_name} src={values?.user_avatar} size={"xl"} />
       {isEditing && (
         <Input
           name="user_avatar"
@@ -155,24 +150,6 @@ export default function Profile() {
             user?.user.user_phone
           )}
         </Text>
-        {/*}
-        <Text fontSize="md">
-          <Text as="span" fontWeight="bold">
-            Avatar:{" "}
-          </Text>
-          {isEditing ? (
-            <Input
-              name="user_avatar"
-              type="file"
-              defaultValue={values.user_avatar}
-              onChange={handleFileUpload}
-              accept=".jpeg, .png, .jpg"
-            />
-          ) : (
-            user?.user.user_avatar
-          )}
-        </Text> */}
-
         <Heading as="h3" fontSize="lg">
           Address
         </Heading>
