@@ -13,6 +13,7 @@ const usersRouter = require("./routes/users.routes");
 const categoriesRouter = require("./routes/categories.routes");
 const productsRouter = require("./routes/products.routes");
 const refreshRouter = require("./routes/refresh.routes");
+const mailRouter = require("./routes/email.routes");
 
 const app = express();
 
@@ -29,4 +30,5 @@ app.use("/users", usersRouter);
 app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 app.use("/refresh", refreshRouter);
+app.use("/mailer", mailRouter);
 module.exports = app;

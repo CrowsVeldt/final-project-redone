@@ -59,6 +59,8 @@ const userSchema = new mongoose.Schema({
   },
 
   token: { type: String },
+
+  email_verify_token: { type: String },
 });
 
 userSchema.pre("save", async function (next) {

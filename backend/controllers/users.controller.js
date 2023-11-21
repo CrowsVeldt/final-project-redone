@@ -164,7 +164,6 @@ const updateCustomer = async (req, res, next) => {
       return res.status(200).json({
         success: true,
         message: `Succeeded in updating customer by id`,
-        user,
       });
     } else {
       res.status(401).send({ message: "Unauthorized action" });
