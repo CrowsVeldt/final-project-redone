@@ -22,6 +22,7 @@ import RequireAuth from "./utils/RequireAuth";
 import SingleProductPage, {
   loader as productLoader,
 } from "./pages/public/Products/ProductPage.jsx";
+import AdminProductPage from "./pages/admin/AdminProductPage.jsx";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -42,11 +43,15 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route
-            path="product/:productId"
+            path="/product/:productId"
             element={<SingleProductPage />}
             loader={productLoader}
           />
         </Route>
+        <Route
+          path="/admin/product/:productId"
+          element={<AdminProductPage />}
+        />
       </Route>
     )
   );
