@@ -8,9 +8,11 @@ import {
   Heading,
   HStack,
   Image,
+  Link as Chlink,
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export default function ({ product, addToCart }) {
   return (
@@ -18,11 +20,13 @@ export default function ({ product, addToCart }) {
       <Center>
         <Card>
           <CardBody>
-            <Image
-              src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
-              borderRadius="lg"
-              maxHeight={"170px"}
-            />
+            <Chlink as={Link} to={`/product/${product._id}`}>
+              <Image
+                src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
+                borderRadius="lg"
+                maxHeight={"170px"}
+              />
+            </Chlink>
             <Stack mt="6" spacing="2">
               <Heading size="sm">{product.product_name}</Heading>
               <Text w={250} fontSize="xs" overflowY="hidden" height={150}>
