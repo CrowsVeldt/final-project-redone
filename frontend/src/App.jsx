@@ -47,11 +47,11 @@ function App() {
             element={<SingleProductPage />}
             loader={productLoader}
           />
+          <Route
+            path="/admin/product/:productId"
+            element={<AdminProductPage />}
+          />
         </Route>
-        <Route
-          path="/admin/product/:productId"
-          element={<AdminProductPage />}
-        />
       </Route>
     )
   );

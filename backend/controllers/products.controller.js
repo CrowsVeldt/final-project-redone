@@ -95,7 +95,6 @@ const addProduct = async (req, res) => {
 
 const getProductById = async (req, res, next) => {
   const { data } = req.body;
-  console.log(data);
 
   try {
     const product = await Product.findOne({ _id: data });
@@ -106,9 +105,26 @@ const getProductById = async (req, res, next) => {
   }
 };
 
+const updateProduct = async (req, res, next) => {
+  // const { value } = req.body;
+  // console.log(req.body);
+  // try {
+  //   const product = await Product.findById(req?.params?.productId);
+  //   console.log(product);
+  //   return res.status(200).json({
+  //     success: true,
+  //     message: `Succeeded in updating product by id`,
+  //     product,
+  //   });
+  // } catch (error) {
+  //   return next(error);
+  // }
+};
+
 module.exports = {
   addProduct,
   getAllProductById,
   getAllProducts,
   getProductById,
+  updateProduct,
 };

@@ -45,6 +45,7 @@ export default function Login() {
         }
       );
       toast.success(response?.data?.message, { position: "bottom-right" });
+      console.log(response.data);
       setUser({
         user: response?.data.user,
         accessToken: response?.data.customerToken,

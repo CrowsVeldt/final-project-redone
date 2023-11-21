@@ -3,6 +3,7 @@ const {
   addProduct,
   getAllProducts,
   getProductById,
+  updateProduct,
 } = require("../controllers/products.controller");
 // const authManager = require('../middlewares/authUser');
 
@@ -13,6 +14,7 @@ const {
 // getProductById
 // addProduct
 // updateProduct
+//router.put("/managers/update/product/:productId", updateProduct);
 // removeProduct
 router.get("/managers/all", getAllProducts);
 // router.get('/managers/:productId', getAllProductById);

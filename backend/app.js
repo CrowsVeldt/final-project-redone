@@ -29,5 +29,4 @@ app.use("/users", usersRouter);
 app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 app.use("/refresh", refreshRouter);
-
 module.exports = app;
