@@ -1,12 +1,22 @@
+import React, { useContext, useState } from "react";
 import axios from "../../../api/axios";
-import { Box, Heading, Image, Text } from "@chakra-ui/react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 
-export const loader = async ({ request, params }) => {
+export const loader = async ({ params }) => {
   try {
     const {
       data: { product },
-    } = await axios.post("/products/by-id", { data: params.productId });
+    } = await axios.get(`/products/customers/${params.productId}`);
 
     return { product };
   } catch (error) {
@@ -14,22 +24,77 @@ export const loader = async ({ request, params }) => {
   }
 };
 
-export default function SingleProductPage() {
-  const data = useLoaderData();
-  console.log(data);
+const ProductPage = () => {
+  const { product } = useLoaderData();
+  const { cartItems, setCartItems } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(1);
+
+  const increment = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrement = () => {
+    if (quantity > 1) setQuantity(quantity - 1);
+  };
+
+  const addToCart = (item) => {
+    const isItemExist = cartItems.find((cartItem) => cartItem._id === item._id);
+    if (isItemExist) {
+      const updatedCartItems = cartItems.map((cartItem) => {
+        if (cartItem._id === item._id) {
+          return { ...cartItem, quantity: cartItem.quantity + quantity };
+        }
+        return cartItem;
+      });
+
+      setCartItems(updatedCartItems);
+    } else {
+      setCartItems((prev) => [...prev, { ...item, quantity: quantity }]);
+    }
+  };
+
+  if (!product) return <Spinner size="xl" />;
 
   return (
-    <Box>
-      <Image
-        src={data.product_image}
-        fallbackSrc={"https://placehold.co/400"}
-        alt={`${data} image`}
-      />
-      {data && <Heading>{data.product_name}</Heading>}
-      <Text>Price: {`$${data.product_price}`}</Text>
-      <Text>Description: {data.product_description}</Text>
-      <Text>Category: {data.product_category}</Text>
-      <Text>Brand: {data.product_brand}</Text>
-    </Box>
+    <>
+      <Flex mx="auto" direction="column" maxW="80%">
+        <Flex minH="65vh" maxW="100%" mx="auto" py={10} px={4}>
+          <Box w="70%">
+            <Image
+              src={product.product_image}
+              fallbackSrc={"https://placehold.co/400"}
+              alt={`${product.product_name}`}
+            />
+          </Box>
+          <Box ml={4}>
+            <Heading size="lg">{product.product_name}</Heading>
+            <Divider mb={2} />
+            <Text mb={2}>{product.product_description}</Text>
+            <Text fontWeight="bold" mb={2}>
+              $ {product.product_price}
+            </Text>
+            <Divider mb={2} />
+            <Flex>
+              <Button onClick={increment}>+</Button>
+              <Text>{quantity}</Text>
+              <Button onClick={decrement}>-</Button>
+            </Flex>
+            <Button
+              onClick={() => addToCart(product)}
+              mb={10}
+              colorScheme="twitter"
+              size="lg"
+            >
+              Add To Cart
+            </Button>
+          </Box>
+        </Flex>
+        <Button as={Link} to={`../`}>
+          Go Back
+        </Button>
+      </Flex>
+    </>
   );
-}
+};
+
+export default ProductPage;

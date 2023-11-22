@@ -12,7 +12,7 @@ import About from "./pages/public/About";
 import Blog from "./pages/public/Blog.jsx";
 import Checkout from "./pages/public/Checkout.jsx";
 import Contact from "./pages/public/Contact";
-import Login from "./pages/public/Login";
+import Login from "./pages/public/Login.jsx";
 import Catalog, { getAllProducts } from "./pages/public/Products/Catalog";
 import Profile from "./pages/private/Profile";
 import Register from "./pages/public/Register";

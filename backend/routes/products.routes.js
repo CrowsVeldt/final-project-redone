@@ -28,8 +28,7 @@ router.post("/managers", addProduct);
 // // getAllProducts
 router.get("/customers/all", getAllProducts);
 // // getProductsById
-router.post("/by-id", getProductById);
-
+router.get("/customers/:productId", getProductById);
 // // queryProducts
 
 // router.get('/customers/all', getAllProducts);
