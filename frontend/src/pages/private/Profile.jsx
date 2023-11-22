@@ -53,8 +53,6 @@ export default function Profile() {
         values
       );
 
-      // updateUser isn't responding with an accessToken, which breaks the site
-      // need to refresh token(?)
       setUser((prevValues) => {
         return { ...prevValues, user: response?.data?.user };
       });

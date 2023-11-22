@@ -5,7 +5,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import ErrorPage from "./error-page.jsx";
+import ErrorPage from "./pages/ErrorElement/ErrorElement.jsx";
 import { AuthContext } from "./context/AuthContext";
 import Root from "./pages/Root";
 import About from "./pages/public/About";
@@ -47,6 +47,7 @@ function App() {
             element={<SingleProductPage />}
             loader={productLoader}
           />
+          <Route path="*" element={<div>Not Found 404</div>} />
           <Route
             path="/admin/product/:productId"
             element={<AdminProductPage />}

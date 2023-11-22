@@ -4,20 +4,13 @@ import { useLoaderData } from "react-router-dom";
 
 export const loader = async ({ request, params }) => {
   try {
-    const product = await axios.post(
-      "/products/by-id",
-      { data: params.productId },
-      { withCredentials: true }
-    );
+    const {
+      data: { product },
+    } = await axios.post("/products/by-id", { data: params.productId });
 
-    const data = product.data;
-
-    //const categories = await axios.get("categories/all");
-
-    return data;
-    // category: categories.data.find((i) => i._id === data.category).name,
-  } catch (err) {
-    return err.response;
+    return { product };
+  } catch (error) {
+    throw new Error("Couldn't find product!");
   }
 };
 
