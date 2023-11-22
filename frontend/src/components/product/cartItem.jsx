@@ -1,4 +1,4 @@
-import { Button, CloseButton, Td, Tr } from "@chakra-ui/react";
+import { Button, CloseButton, Image, Td, Tr } from "@chakra-ui/react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
@@ -13,7 +13,7 @@ export default function CartItem(props) {
       </Td>
       <Td px={1} textAlign={"center"}>{`$${product.product_price}`}</Td>
       <Td px={1} textAlign={"center"}>
-        image
+        <Image src={product.product_image} />
       </Td>
       <Td px={1} textAlign={"center"}>
         <Button
