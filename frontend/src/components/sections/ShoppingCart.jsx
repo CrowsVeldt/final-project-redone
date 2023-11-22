@@ -11,6 +11,10 @@ import {
   ModalOverlay,
   Table,
   useDisclosure,
+  Thead,
+  Tbody,
+  Th,
+  Tr,
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -56,7 +60,6 @@ export default function ShoppingCartModal() {
           </Badge>
         )}
         <Icon as={ShoppingCartIcon} fontSize={"3xl"} />
-        Cart
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -65,10 +68,20 @@ export default function ShoppingCartModal() {
           <ModalHeader>Shopping cart</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Table>
-              {cartItems.map((item, index) => {
-                return <CartItem product={item} key={index} />;
-              })}
+            <Table colorScheme="black">
+              <Thead>
+                <Tr>
+                  <Th>Name</Th>
+                  <Th>Price</Th>
+                  <Th>Image</Th>
+                  <Th>Quantity</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {cartItems.map((item, index) => {
+                  return <CartItem product={item} key={index} />;
+                })}
+              </Tbody>
               {cartItems ? `Total: $${totalPrice}` : ""}
             </Table>
           </ModalBody>

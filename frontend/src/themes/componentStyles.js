@@ -1,8 +1,8 @@
 export const navStyles = (menuOpen) => {
   return {
     display: [menuOpen ? "flex" : "none", "flex"],
-    gap: 5,
-    p: [2, 5, 7],
+    // gap: 5,
+    // p: [2, 5, 7],
   };
 };
 
