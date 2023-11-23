@@ -44,7 +44,7 @@ export default function Register() {
 
       const response = await axios.post("/users/customers/register", {
         user_name,
-        user_email,
+        user_email: user_email.toLowerCase(),
         user_password,
         user_phone,
       });

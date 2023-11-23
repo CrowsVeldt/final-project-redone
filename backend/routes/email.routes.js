@@ -15,13 +15,9 @@ const transporter = mailer.createTransport({
 
 router.post("/send-password-reset-link", async (req, res, next) => {
   const { user_email } = req.body;
-  const l = user_email.toLowerCase();
 
   try {
-    const user = await User.findOne({ user_email });
-    const shit = await User.find({ user_email });
-    const shit1 = shit[0];
-    console.log(shit1);
+    const user = await User.findOne({ user_email: user_email.toLowerCase() });
 
     if (!user) {
       res.status(400);
