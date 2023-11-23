@@ -2,22 +2,23 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Center,
-  Box,
   Button,
+  Flex,
   Heading,
-  HStack,
   Image,
   Link as Chlink,
   Stack,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 export default function ({ product, addToCart }) {
   return (
-    <Box mt={2} bgColor={"whiteAlpha.900"}>
-      <Center>
+    <Flex mx="auto" direction="column" maxW="80%">
+      {" "}
+      <Flex minH="65vh" maxW="100%" mx="auto" py={10} px={4}>
+        {" "}
         <Card>
           <CardBody>
             <Chlink as={Link} to={`/product/${product._id}`}>
@@ -33,7 +34,7 @@ export default function ({ product, addToCart }) {
               <Text w={250} fontSize="xs" overflowY="hidden" height={150}>
                 {product.product_description}
               </Text>
-              <HStack>
+              <VStack>
                 {product.categories.map((item) => (
                   <Text
                     bg="purple.200"
@@ -45,7 +46,7 @@ export default function ({ product, addToCart }) {
                     {item.category.category_name}
                   </Text>
                 ))}
-              </HStack>
+              </VStack>
               <Text color="blue.500" fontSize="xl">
                 ${product.product_price}
               </Text>
@@ -61,7 +62,7 @@ export default function ({ product, addToCart }) {
             </Button>
           </CardFooter>
         </Card>
-      </Center>
-    </Box>
+      </Flex>
+    </Flex>
   );
 }
