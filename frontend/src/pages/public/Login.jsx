@@ -3,6 +3,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  Flex,
   Heading,
   Input,
   InputGroup,
@@ -10,10 +11,10 @@ import {
   Link as Chlink,
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "../../api/axios";
 import { AuthContext } from "../../context/AuthContext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -111,15 +112,19 @@ const Login = () => {
         </InputGroup>
       </FormControl>
 
-      <Button type="submit" colorScheme="teal" size="lg" mb={4}>
-        Login
-      </Button>
-      <Chlink as={Link} to={"/password-reset"}>
-        Reset password
-      </Chlink>
-      <Chlink as={Link} to={"/register"}>
-        Don't have an account? Register here!
-      </Chlink>
+      <Flex>
+        <Button type="submit" colorScheme="teal" size="lg" mb={4}>
+          Login
+        </Button>
+        <Flex flexDirection={"column"}>
+          <Chlink as={Link} to={"/register"}>
+            Don't have an account? Register here!
+          </Chlink>
+          <Chlink as={Link} to={"/password-reset"}>
+            Reset password
+          </Chlink>
+        </Flex>
+      </Flex>
     </Box>
   );
 };
