@@ -1,4 +1,4 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, CircularProgress } from "@chakra-ui/react";
 import PasswordInput from "../../components/inputs/PasswordInput";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -91,29 +91,21 @@ export default function ForgotPassword() {
             value={repeatPassword}
             state={setRepeatPasswordValue}
           />
-          <Button type="submit" colorScheme="teal">
+          <Button type="submit" onClick={updatePassword} colorScheme="teal">
             Reset
           </Button>
         </Box>
       ) : (
-        <Box>
-          <PasswordInput
-            id="password-reset-input"
-            placeholder="Password"
-            name="password"
-            value={password}
-            state={setPasswordValue}
-          />
-          <PasswordInput
-            id="repeat-password-reset-input"
-            placeholder="Repeat password"
-            name="password-repeat"
-            value={repeatPassword}
-            state={setRepeatPasswordValue}
-          />
-          <Button type="submit" colorScheme="teal">
-            Reset
-          </Button>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          Loading... &nbsp;
+          <CircularProgress />
         </Box>
       )}
     </>
