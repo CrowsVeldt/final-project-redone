@@ -94,12 +94,12 @@ router.get("/forgot-password/:id", async (req, res, next) => {
 
 router.post("/update-password/:id", async (req, res, next) => {
   const { id } = req.body;
-  const { user_password, customer_token } = req.body;
+  const { user_password, email_verify_token } = req.body;
 
   try {
     const validUser = await User.findOne({
       _id: id,
-      email_verify_token: customer_token,
+      email_verify_token,
     });
 
     const verifyToken = jwt.verify(email_verify_token, process.env.JWT_SECRET);
