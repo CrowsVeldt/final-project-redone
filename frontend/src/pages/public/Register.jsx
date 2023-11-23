@@ -5,10 +5,11 @@ import {
   FormLabel,
   Heading,
   Input,
+  Link as Chlink,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import PasswordInput from "../../components/inputs/PasswordInput";
 
@@ -118,7 +119,9 @@ export default function Register() {
       <Button type="submit" colorScheme="teal" size="lg" mb={4}>
         Register
       </Button>
-      {/* text for "have account? -> link to login" */}
+      <Chlink as={Link} to={"/login"}>
+        Already have an account? Log in here!
+      </Chlink>
     </Box>
   );
 }

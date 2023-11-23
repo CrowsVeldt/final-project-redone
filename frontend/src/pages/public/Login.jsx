@@ -117,6 +117,9 @@ const Login = () => {
       <Chlink as={Link} to={"/password-reset"}>
         Reset password
       </Chlink>
+      <Chlink as={Link} to={"/register"}>
+        Don't have an account? Register here!
+      </Chlink>
     </Box>
   );
 };
