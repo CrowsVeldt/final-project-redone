@@ -81,17 +81,20 @@ const forgotPassword = async (req, res, next) => {
     } else {
       res
         .status(401)
-        .send({ status: 401, success: false, message: "user verified" });
+        .send({ status: 401, success: false, message: "user not verified" });
     }
   } catch (error) {
-    res
-      .status(401)
-      .send({ status: 401, success: false, message: "user verified", error });
+    res.status(401).send({
+      status: 401,
+      success: false,
+      message: "user not verified",
+      error,
+    });
   }
 };
 
 const updatePassword = async (req, res, next) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const { user_password, email_verify_token } = req.body;
 
   try {
@@ -100,7 +103,10 @@ const updatePassword = async (req, res, next) => {
       email_verify_token,
     });
 
-    const verifyToken = jwt.verify(email_verify_token, process.env.JWT_SECRET);
+    const verifyToken = await jwt.verify(
+      email_verify_token,
+      process.env.JWT_SECRET
+    );
 
     if (validUser && verifyToken._id) {
       const newPassword = await bcrypt.hash(user_password, 10);
@@ -114,21 +120,21 @@ const updatePassword = async (req, res, next) => {
       res.status(201).send({
         status: 201,
         success: true,
-        message: "user password changed",
+        message: "User password changed",
         user: setNewUserPassword,
       });
     } else {
       res.status(401).send({
         status: 401,
         success: false,
-        message: "user not verified",
+        message: "User not verified",
       });
     }
   } catch (error) {
     res.status(401).send({
       status: 401,
       success: false,
-      message: "user not verified",
+      message: "User not verified",
       error,
     });
   }
