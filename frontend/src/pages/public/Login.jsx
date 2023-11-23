@@ -56,7 +56,9 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      toast.success(response?.data?.message);
+      toast.success(
+        `${response?.data?.user?.user_name} logged in successfully`
+      );
       setUser({
         user: response?.data.user,
         accessToken: response?.data.customerToken,

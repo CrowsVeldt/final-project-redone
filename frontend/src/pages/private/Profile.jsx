@@ -57,7 +57,7 @@ export default function Profile() {
         return { ...prevValues, user: response?.data?.user };
       });
       setIsEditing(false);
-      toast.success(response?.data?.message);
+      toast.success(`Updated ${values?.user_name}'s account info`);
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

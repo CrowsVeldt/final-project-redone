@@ -12,7 +12,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <ChakraProvider>
     <CartProvider>
       <AuthProvider>
-        <ToastContainer position="bottom-left" />
+        <ToastContainer
+          position="bottom-left"
+          autoClose={2000}
+          closeOnClick
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+        />
         <App />
       </AuthProvider>
     </CartProvider>
