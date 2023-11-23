@@ -7,7 +7,7 @@ export default function Root() {
   return (
     <>
       <Nav />
-      <Box maxW="92%" mx="auto">
+      <Box minH="90vh" maxW="92%" mx="auto">
         <Divider />
         <Outlet />
       </Box>

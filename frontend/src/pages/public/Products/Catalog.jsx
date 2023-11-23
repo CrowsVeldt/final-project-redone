@@ -34,7 +34,7 @@ export default function Catalog() {
     });
   });
 
-  const productPerPage = 4;
+  const productPerPage = 6;
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
   const currentProducts = products.slice(
