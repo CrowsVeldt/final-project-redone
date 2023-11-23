@@ -66,7 +66,7 @@ router.post("/send-password-reset-link", async (req, res, next) => {
 
 router.get("/forgot-password/:id", async (req, res, next) => {
   const { id } = req.params;
-  const { email_verify_token } = request.headers;
+  const { email_verify_token } = req.headers;
 
   try {
     const validUser = await User.findOne({ _id: id, email_verify_token });
@@ -92,7 +92,7 @@ router.get("/forgot-password/:id", async (req, res, next) => {
   }
 });
 
-router.post("/:id", async (req, res, next) => {
+router.post("/update-password/:id", async (req, res, next) => {
   const { id } = req.body;
   const { user_password, customer_token } = req.body;
 
