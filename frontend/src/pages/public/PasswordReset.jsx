@@ -1,4 +1,11 @@
-import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "../../api/axios";
@@ -6,11 +13,19 @@ import axios from "../../api/axios";
 export default function PasswordReset() {
   const [email, setEmail] = useState("");
 
-  const handlePasswordReset = async () => {
+  const handlePasswordReset = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post("/mailer/send-password-reset-link", {
-        user_email: email,
-      });
+      const response = await axios.post(
+        "/mailer/send-password-reset-link",
+        {
+          user_email: email,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
 
       toast.success(`Please check your email for a reset link`);
     } catch (error) {
@@ -34,16 +49,19 @@ export default function PasswordReset() {
       px={4}
     >
       <FormControl isRequired mb={4}>
-        <FormLabel>Email Address</FormLabel>
-        <Input
-          name="user_email"
-          type="text"
-          placeholder="Type in your Email"
-          value={email}
-          onChange={handleChange}
-        />
+        <FormLabel>Email</FormLabel>
+        <InputGroup>
+          <Input
+            name="user_email"
+            placeholder="Type in your email address"
+            value={email}
+            onChange={handleChange}
+          />
+        </InputGroup>
       </FormControl>
-      <Button onClick={handlePasswordReset}>Reset</Button>
+      <Button type="submit" colorScheme="teal">
+        Reset
+      </Button>
     </Box>
   );
 }
