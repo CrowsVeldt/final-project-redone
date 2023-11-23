@@ -7,12 +7,13 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Link as Chlink,
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "../../api/axios";
 import { AuthContext } from "../../context/AuthContext";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -113,7 +114,9 @@ const Login = () => {
       <Button type="submit" colorScheme="teal" size="lg" mb={4}>
         Login
       </Button>
-      {/* text for "have account? -> link to login" */}
+      <Chlink as={Link} to={"/password-reset"}>
+        Reset password
+      </Chlink>
     </Box>
   );
 };
