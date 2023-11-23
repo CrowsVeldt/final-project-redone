@@ -1,4 +1,4 @@
-import { Button, CloseButton, Td, Tr } from "@chakra-ui/react";
+import { Button, CloseButton, Image, Td, Tr } from "@chakra-ui/react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
@@ -7,26 +7,28 @@ export default function CartItem(props) {
   const { product } = props;
 
   return (
-    <Tr>
-      <Td>{product.product_name}</Td>
-      <Td>{product.product_image}</Td>
-      <Td>{`$${product.product_price}`}</Td>
-      <Td>
+    <Tr h={20}>
+      <Td px={1} textAlign={"center"}>
+        {product.product_name}
+      </Td>
+      <Td px={1} textAlign={"center"}>{`$${product.product_price}`}</Td>
+      <Td px={1} textAlign={"center"}>
+        <Image src={product.product_image} />
+      </Td>
+      <Td px={1} textAlign={"center"}>
         <Button
           variant={"ghost"}
-          h={"1.5em"}
+          h={"1em"}
           onClick={() => {
             removeFromCart(product);
           }}
         >
           {"-"}
         </Button>
-      </Td>
-      <Td>{product.quantity}</Td>
-      <Td>
+        {product.quantity}
         <Button
           variant={"ghost"}
-          h={"1.5em"}
+          h={"1em"}
           onClick={() => {
             addToCart(product);
           }}
@@ -34,7 +36,14 @@ export default function CartItem(props) {
           {"+"}
         </Button>
       </Td>
-      <CloseButton onClick={() => removeFromCart(product, true)} />
+
+      <CloseButton
+        size={"sm"}
+        position={"relative"}
+        right={7}
+        bottom={-1}
+        onClick={() => removeFromCart(product, true)}
+      />
     </Tr>
   );
 }

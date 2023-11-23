@@ -22,7 +22,8 @@ export default function ({ product, addToCart }) {
           <CardBody>
             <Chlink as={Link} to={`/product/${product._id}`}>
               <Image
-                src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
+                src={product.product_image}
+                fallbackSrc={"https://placehold.co/400"}
                 borderRadius="lg"
                 maxHeight={"170px"}
               />

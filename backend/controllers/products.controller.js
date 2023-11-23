@@ -94,16 +94,39 @@ const addProduct = async (req, res) => {
 };
 
 const getProductById = async (req, res, next) => {
-  const { data } = req.body;
-  console.log(data);
-
+  const { productId } = req.params;
   try {
-    const product = await Product.findOne({ _id: data });
+    const product = await Product.findById(productId).populate(
+      "categories.category"
+    );
 
-    res.send(product);
-  } catch (err) {
-    next(err);
+    return res.status(200).json({
+      success: true,
+      message: `success to find Product - for managers`,
+      product,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: `error in get Product - for managers`,
+      error: error.message,
+    });
   }
+};
+
+const updateProduct = async (req, res, next) => {
+  // const { value } = req.body;
+  // console.log(req.body);
+  // try {
+  //   const product = await Product.findById(req?.params?.productId);
+  //   console.log(product);
+  //   return res.status(200).json({
+  //     success: true,
+  //     message: `Succeeded in updating product by id`,
+  //     product,
+  //   });
+  // } catch (error) {
+  //   return next(error);
+  // }
 };
 
 module.exports = {
@@ -111,4 +134,5 @@ module.exports = {
   getAllProductById,
   getAllProducts,
   getProductById,
+  updateProduct,
 };

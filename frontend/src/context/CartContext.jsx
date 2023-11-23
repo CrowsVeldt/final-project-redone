@@ -43,6 +43,10 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const resetCart = () => {
+    setCartItems([]);
+  };
+
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
     setCartItems(storedCartItems);
@@ -56,6 +60,8 @@ const CartProvider = ({ children }) => {
     cartItems,
     addToCart,
     removeFromCart,
+    resetCart,
+    setCartItems,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -1,6 +1,3 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import {
   Box,
   Button,
@@ -8,18 +5,26 @@ import {
   FormLabel,
   Heading,
   Input,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
+import { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import axios from "../../api/axios";
 import { AuthContext } from "../../context/AuthContext";
-import PasswordInput from "../../components/inputs/PasswordInput";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function Login() {
+const Login = () => {
   const { user, setUser } = useContext(AuthContext);
+  const [show, setShow] = useState(false);
   const [values, setValues] = useState({
     user_email: "",
+
     user_password: "",
   });
-  const nav = useNavigate();
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChange = (e) => {
     setValues((prevValues) => ({
@@ -27,6 +32,13 @@ export default function Login() {
       [e.target.name]: e.target.value,
     }));
   };
+  const from = location.state?.from?.pathname || "/";
+
+  const handleClick = () => setShow(!show);
+
+  useEffect(() => {
+    if (user) navigate(from, { replace: true });
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,17 +56,17 @@ export default function Login() {
           withCredentials: true,
         }
       );
-      toast.success(response?.data?.message, { position: "bottom-right" });
+      toast.success(response?.data?.message);
       setUser({
         user: response?.data.user,
         accessToken: response?.data.customerToken,
       });
-      nav(-1);
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data.message, { position: "bottom-right" });
+      toast.error(error.response?.data.message);
     }
   };
+
   return (
     <Box
       as="form"
@@ -79,12 +91,21 @@ export default function Login() {
         />
       </FormControl>
       <FormControl isRequired mb={4}>
-        <PasswordInput
-          name="user_password"
-          placeholder="Password"
-          value={values.user_password}
-          state={handleChange}
-        />
+        <FormLabel>Password</FormLabel>
+        <InputGroup>
+          <Input
+            name="user_password"
+            type={show ? "text" : "password"}
+            placeholder="Type in you password"
+            value={values.user_password}
+            onChange={handleChange}
+          />
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
       </FormControl>
 
       <Button type="submit" colorScheme="teal" size="lg" mb={4}>
@@ -93,4 +114,6 @@ export default function Login() {
       {/* text for "have account? -> link to login" */}
     </Box>
   );
-}
+};
+
+export default Login;

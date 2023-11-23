@@ -5,14 +5,14 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import ErrorPage from "./error-page.jsx";
+import ErrorPage from "./pages/ErrorElement/ErrorElement.jsx";
 import { AuthContext } from "./context/AuthContext";
 import Root from "./pages/Root";
 import About from "./pages/public/About";
 import Blog from "./pages/public/Blog.jsx";
 import Checkout from "./pages/public/Checkout.jsx";
 import Contact from "./pages/public/Contact";
-import Login from "./pages/public/Login";
+import Login from "./pages/public/Login.jsx";
 import Catalog, { getAllProducts } from "./pages/public/Products/Catalog";
 import Profile from "./pages/private/Profile";
 import Register from "./pages/public/Register";
@@ -47,11 +47,12 @@ function App() {
             element={<SingleProductPage />}
             loader={productLoader}
           />
+          <Route path="*" element={<div>Not Found 404</div>} />
+          <Route
+            path="/admin/product/:productId"
+            element={<AdminProductPage />}
+          />
         </Route>
-        <Route
-          path="/admin/product/:productId"
-          element={<AdminProductPage />}
-        />
       </Route>
     )
   );

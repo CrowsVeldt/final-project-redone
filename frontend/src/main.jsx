@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <ChakraProvider>
     <CartProvider>
       <AuthProvider>
-        <ToastContainer />
+        <ToastContainer position="bottom-left" />
         <App />
       </AuthProvider>
     </CartProvider>

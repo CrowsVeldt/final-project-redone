@@ -53,9 +53,9 @@ export default function Profile() {
         values
       );
 
-      // updateUser isn't responding with an accessToken, which breaks the site
-      // need to refresh token(?)
-      setUser(response?.data?.user);
+      setUser((prevValues) => {
+        return { ...prevValues, user: response?.data?.user };
+      });
       setIsEditing(false);
       toast.success(response?.data?.message);
     } catch (error) {

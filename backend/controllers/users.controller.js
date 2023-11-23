@@ -98,6 +98,7 @@ const loginCustomer = async (req, res, next) => {
         _id: user._id,
         user_name: user.user_name,
         user_email: user.user_email,
+        user_avatar: user.user_avatar,
       },
     });
   } catch (error) {
@@ -163,7 +164,6 @@ const updateCustomer = async (req, res, next) => {
       return res.status(200).json({
         success: true,
         message: `Succeeded in updating customer by id`,
-        user,
       });
     } else {
       res.status(401).send({ message: "Unauthorized action" });
