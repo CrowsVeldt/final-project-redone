@@ -19,7 +19,9 @@ const deleteCustomer = async (req, res, next) => {
       .status(200)
       .json({ success: true, message: "Succesfully deleted user" });
   } catch (error) {
-    res.status(400).json({ success: false, message: "User was not deleted" });
+    return res
+      .status(400)
+      .json({ success: false, message: "User was not deleted" });
   }
 };
 
@@ -140,7 +142,7 @@ const getUserInfo = async (req, res, next) => {
         .status(401)
         .send({ success: false, message: "User not found!" });
 
-    res.status(200).send({
+    return res.status(200).send({
       success: true,
       message: "user login successfully - for customer",
       user: {
@@ -164,9 +166,15 @@ const updateCustomer = async (req, res, next) => {
       return res.status(200).json({
         success: true,
         message: `Succeeded in updating customer by id`,
+        user: {
+          _id: user._id,
+          user_name: user.user_name,
+          user_email: user.user_email,
+          user_avatar: user.user_avatar,
+        },
       });
     } else {
-      res.status(401).send({ message: "Unauthorized action" });
+      return res.status(401).send({ message: "Unauthorized action" });
     }
   } catch (error) {
     return next(error);
