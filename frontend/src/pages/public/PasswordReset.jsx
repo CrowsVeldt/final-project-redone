@@ -10,7 +10,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "../../api/axios";
 
-export default function RequestPasswordReset() {
+export default function PasswordReset() {
   const [email, setEmail] = useState("");
 
   const handlePasswordReset = async (e) => {
@@ -34,6 +34,7 @@ export default function RequestPasswordReset() {
       );
     }
   };
+
   const handleChange = (e) => {
     setEmail(e.target.value);
   };

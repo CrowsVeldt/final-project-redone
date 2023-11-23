@@ -23,7 +23,8 @@ import SingleProductPage, {
   loader as productLoader,
 } from "./pages/public/Products/ProductPage.jsx";
 import AdminProductPage from "./pages/admin/AdminProductPage.jsx";
-import RequestPasswordReset from "./pages/public/RequestPasswordReset.jsx";
+import PasswordReset from "./pages/public/PasswordReset.jsx";
+import ForgotPassword from "./pages/public/ForgotPassword.jsx";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -38,9 +39,10 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/password-reset" element={<RequestPasswordReset />} />
           <Route path="/register" element={<Register />} />
           <Route path="/support" element={<SupportPage />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
+          <Route path="/forgot-password/:id" element={<ForgotPassword />} />
           <Route element={<RequireAuth user={user} />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
